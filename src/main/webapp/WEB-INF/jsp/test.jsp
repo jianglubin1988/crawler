@@ -5,9 +5,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<!-- <link href="../_dist/h5/test.css" rel="stylesheet"> -->
-<!-- <script src="../_dist/h5/test.js"></script> -->
+<title>show</title>
 
 </head>
 <body>
