@@ -30,33 +30,33 @@ public class Crawler {
 	private SDataService dataService;
 
 	public static void main(String[] args) {
-		Long time = Calendar.getInstance().getTimeInMillis();
-		time = time - (1000 * 3600 * 24);
-		String url = "http://www.toutiao.com/api/pc/feed/?category=news_finance&utm_source=toutiao&widen=1&max_behot_time=0";
-		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String result = HttpUtils.sendHttpGet(new HttpGet(url));
-		JSONObject obj = JSONObject.parseObject(result);
-		Object arr = obj.get("data");
-		List<Map> mapList = JSON.parseArray(arr+"", Map.class);
+//		Long time = Calendar.getInstance().getTimeInMillis();
+//		time = time - (1000 * 3600 * 24);
+//		String url = "http://www.toutiao.com/api/pc/feed/?category=news_finance&utm_source=toutiao&widen=1&max_behot_time=0";
+//		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		String result = HttpUtils.sendHttpGet(new HttpGet(url));
+//		JSONObject obj = JSONObject.parseObject(result);
+//		Object arr = obj.get("data");
+//		List<Map> mapList = JSON.parseArray(arr+"", Map.class);
+//		List<SData> sdList = new ArrayList<SData>();
+//		for(Map map : mapList) {
+//			SData data = new SData();
+//			data.setTitle(map.get("title").toString());
+//			String surl = map.get("source_url").toString();
+//			surl = ToutiaoPageProcessor.PREFIX_PAGE + "a" + surl.substring(7);
+//			data.setUrl(surl);
+//			data.setSource(map.get("source").toString());
+//			Date date = new Date(Long.parseLong(map.get("behot_time").toString())*1000);
+//			data.setPubtime(date);
+//			data.setCreatedAt(new Date());
+//			data.toString();
+//			sdList.add(data);
+//		}
+//		
+//		Crawler c = new Crawler();
+//		c.saveSData(sdList);
 		
-		List<SData> sdList = new ArrayList<SData>();
-		for(Map map : mapList) {
-			SData data = new SData();
-			data.setTitle(map.get("title").toString());
-			String surl = map.get("source_url").toString();
-			surl = ToutiaoPageProcessor.PREFIX_PAGE + "a" + surl.substring(7);
-			data.setUrl(surl);
-			data.setSource(map.get("source").toString());
-			Date date = new Date(Long.parseLong(map.get("behot_time").toString())*1000);
-			data.setPubtime(date);
-			data.setCreatedAt(new Date());
-			data.toString();
-			sdList.add(data);
-		}
-		
-		Crawler c = new Crawler();
-		c.saveSData(sdList);
-		
+		ToutiaoPageProcessor.run();
 	}
 	
 	private void saveSData(List<SData> data) {
