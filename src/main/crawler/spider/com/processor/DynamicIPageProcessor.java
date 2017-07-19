@@ -19,12 +19,16 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
-public class ToutiaoPageProcessor implements PageProcessor {
-	
-	private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
+/**
+ * 通过接口获取页面地址，解析地址获取数据
+ * @author robin
+ *
+ */
+public class DynamicIPageProcessor implements PageProcessor {
+
+private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 	
 	public static final String PREFIX_PAGE = "http://www.toutiao.com/";
-//	public static final String REGEX_PAGE = "http://www.toutiao.com/a\\d+/";\
 	public static final String REGEX_GROUP = "/group/\\d+/";
 	private static final String NEWS_FINANCE_URL = "http://www.toutiao.com/api/pc/feed/?category=news_finance&utm_source=toutiao&widen=1&max_behot_time=0";
 	
@@ -93,8 +97,5 @@ public class ToutiaoPageProcessor implements PageProcessor {
 		Spider.create(new ToutiaoPageProcessor()).addUrl(PREFIX_PAGE).thread(5).run();
 	}
 	
-//	public static void main(String[] args) {
-//		Spider.create(new ToutiaoPageProcessor()).addUrl(PREFIX_PAGE).thread(5).run();
-//	}
 
 }
