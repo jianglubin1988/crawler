@@ -49,21 +49,21 @@ private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 			String author = "";
 			String url = page.getRequest().getUrl();
 			Date createTime = new Date();
-			
-			try {
-				SData data = new SData();
-				data.setTitle(title);
-				data.setSource(source);
-				Date date = DateUtils.format_mm.parse(pubtime);
-				data.setPubtime(date);
-				data.setContent(content);
-				data.setAuthor(author);
-				data.setCreatedAt(createTime);
-				data.setUrl(url);
-				this.saveData(data);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+//			
+//			try {
+//				SData data = new SData();
+//				data.setTitle(title);
+//				data.setSource(source);
+//				Date date = DateUtils.format_mm.parse(pubtime);
+//				data.setPubtime(date);
+//				data.setContent(content);
+//				data.setAuthor(author);
+//				data.setCreatedAt(createTime);
+//				data.setUrl(url);
+//				this.saveData(data);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 		}
 	}
 

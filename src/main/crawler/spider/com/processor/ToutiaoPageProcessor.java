@@ -1,7 +1,6 @@
 package spider.com.processor;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,51 +11,51 @@ import com.alibaba.fastjson.JSONObject;
 
 import ssm.com.domain.SData;
 import ssm.com.service.impl.SDataServiceImpl;
-import ssm.com.utils.DateUtils;
 import ssm.com.utils.HttpUtils;
+import ssm.com.utils.PageUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
+/**
+ * 头条文章爬取类
+ * @author robin
+ *
+ */
 public class ToutiaoPageProcessor implements PageProcessor {
 	
 	private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 	
 	public static final String PREFIX_PAGE = "http://www.toutiao.com/";
-//	public static final String REGEX_PAGE = "http://www.toutiao.com/a\\d+/";\
 	public static final String REGEX_GROUP = "/group/\\d+/";
 	private static final String NEWS_FINANCE_URL = "http://www.toutiao.com/api/pc/feed/?category=news_finance&utm_source=toutiao&widen=1&max_behot_time=0";
 	
 	private List<String> links = null;
 	@Override
 	public void process(Page page) {
+		PageUtils pu = new PageUtils();
+		SDataServiceImpl service = new SDataServiceImpl();
 		this.initLinks();
 		page.addTargetRequests(links);
 		
 		String title = page.getHtml().xpath("//h1[@class='article-title']/text()").toString();
-		if (title == null || title == "") {
-			// skip this page
+		String content = page.getHtml().xpath("//div[@class='article-content']/tidyText()").toString();
+		if (title == null || title == "" || content == null || content == "") {
 			page.setSkip(true);
 		}else {
-			String source = page.getHtml().xpath("//div[@class='articleInfo']/span[@class='src']/text()").toString();
-			String pubtime = page.getHtml().xpath("//div[@class='articleInfo']/span[@class='time']/text()").toString();
-			String content = page.getHtml().xpath("//div[@class='article-content']/tidyText()").toString();
-			String author = "";
-			String url = page.getRequest().getUrl();
-			Date createTime = new Date();
-			
 			try {
-				SData data = new SData();
-				data.setTitle(title);
-				data.setSource(source);
-				Date date = DateUtils.format_mm.parse(pubtime);
-				data.setPubtime(date);
-				data.setContent(content);
-				data.setAuthor(author);
-				data.setCreatedAt(createTime);
-				data.setUrl(url);
-				this.saveData(data);
+				String source = page.getHtml().xpath("//div[@class='articleInfo']/span[@class='src']/text()").toString();
+				String pubtime = page.getHtml().xpath("//div[@class='articleInfo']/span[@class='time']/text()").toString();
+				String author = "";
+				String url = page.getRequest().getUrl();
+				page.putField("title", title);
+				page.putField("source", source);
+				page.putField("pubtime", pubtime);
+				page.putField("content", content);
+				page.putField("author", author);
+				page.putField("url", url);
+				service.saveSDate(pu.page2data(page));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -77,24 +76,14 @@ public class ToutiaoPageProcessor implements PageProcessor {
 		for(Map map : mapList) {
 			String surl = map.get("source_url").toString();
 			if(surl.matches(REGEX_GROUP)) {
-				surl = PREFIX_PAGE + "a" + surl.substring(7);
+				surl = PREFIX_PAGE + surl.replace("group/", "a");
 				links.add(surl);
 			}
 		}
-	}
-	
-	public void saveData(SData data) {
-		SDataServiceImpl service = new SDataServiceImpl();
-		service.saveSDate(data);
-		System.out.println(data.getTitle());
 	}
 	
 	public static void run() {
 		Spider.create(new ToutiaoPageProcessor()).addUrl(PREFIX_PAGE).thread(5).run();
 	}
 	
-//	public static void main(String[] args) {
-//		Spider.create(new ToutiaoPageProcessor()).addUrl(PREFIX_PAGE).thread(5).run();
-//	}
-
 }
