@@ -9,10 +9,8 @@ import org.apache.http.client.methods.HttpGet;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-import ssm.com.domain.SData;
-import ssm.com.service.impl.SDataServiceImpl;
+import spider.com.pipeline.DataPipeline;
 import ssm.com.utils.HttpUtils;
-import ssm.com.utils.PageUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -34,11 +32,8 @@ public class ToutiaoPageProcessor implements PageProcessor {
 	private List<String> links = null;
 	@Override
 	public void process(Page page) {
-		PageUtils pu = new PageUtils();
-		SDataServiceImpl service = new SDataServiceImpl();
 		this.initLinks();
 		page.addTargetRequests(links);
-		
 		String title = page.getHtml().xpath("//h1[@class='article-title']/text()").toString();
 		String content = page.getHtml().xpath("//div[@class='article-content']/tidyText()").toString();
 		if (title == null || title == "" || content == null || content == "") {
@@ -55,7 +50,6 @@ public class ToutiaoPageProcessor implements PageProcessor {
 				page.putField("content", content);
 				page.putField("author", author);
 				page.putField("url", url);
-				service.saveSDate(pu.page2data(page));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -83,7 +77,7 @@ public class ToutiaoPageProcessor implements PageProcessor {
 	}
 	
 	public static void run() {
-		Spider.create(new ToutiaoPageProcessor()).addUrl(PREFIX_PAGE).thread(5).run();
+		Spider.create(new ToutiaoPageProcessor()).addPipeline(new DataPipeline()).addUrl(PREFIX_PAGE).thread(5).run();
 	}
 	
 }

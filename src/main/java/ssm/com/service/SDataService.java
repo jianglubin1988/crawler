@@ -1,5 +1,7 @@
 package ssm.com.service;
 
+import java.util.List;
+
 import ssm.com.domain.SData;
 
 public interface SDataService {
@@ -17,4 +19,8 @@ public interface SDataService {
     int updateByPrimaryKeyWithBLOBs(SData record);
 
     int updateByPrimaryKey(SData record);
+    
+    public void saveSDate(SData data);
+    
+    public void saveSDataList(List<SData> data);
 }
