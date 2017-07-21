@@ -9,9 +9,7 @@ import spider.com.processor.DynamicIPageProcessor;
 import ssm.com.utils.DateUtils;
 
 /**
- * ≈¿≥Ê÷˜¿‡
  * @author robin
- *
  */
 public class Crawler {
 	

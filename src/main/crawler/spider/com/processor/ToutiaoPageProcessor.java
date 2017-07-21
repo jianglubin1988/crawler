@@ -17,7 +17,6 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 /**
- * 头条文章爬取类
  * @author robin
  *
  */

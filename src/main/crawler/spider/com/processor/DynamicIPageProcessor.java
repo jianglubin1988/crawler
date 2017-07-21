@@ -10,7 +10,7 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 
 /**
- * 通过接口获取页面地址，解析地址获取数据
+ * 閫氳繃鎺ュ彛鑾峰彇椤甸潰鍦板潃锛岃В鏋愬湴鍧�鑾峰彇鏁版嵁
  * 
  * @author robin
  *
@@ -40,7 +40,7 @@ public class DynamicIPageProcessor implements IPageProcessor {
 	}
 
 	public void run(Map<String, String> pageMap) {
-		// 启动webmagic
+		// 锟斤拷锟斤拷webmagic
 		DynamicSpider.create(new DynamicIPageProcessor()).addPipeline(new DataPipeline()).addUrl(pageMap.get("targetUrl")).thread(5).run(pageMap);
 	}
 

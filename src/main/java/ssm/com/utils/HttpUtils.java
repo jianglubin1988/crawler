@@ -2,10 +2,7 @@ package ssm.com.utils;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -24,9 +21,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-
 public class HttpUtils {
 	private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(15000).setConnectTimeout(15000)
 			.setConnectionRequestTimeout(15000).build();
@@ -37,11 +31,11 @@ public class HttpUtils {
 		HttpEntity entity = null;
 		String responseContent = null;
 		try {
-			// ´´½¨Ä¬ÈÏµÄhttpClientÊµÀý.
+			// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½httpClientÊµï¿½ï¿½.
 			httpClient = HttpClients.createDefault();
 			httpGet.setConfig(requestConfig);
 
-			// Ö´ÐÐÇëÇó
+			// Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			response = httpClient.execute(httpGet);
 			entity = response.getEntity();
 			responseContent = EntityUtils.toString(entity, "UTF-8");
@@ -49,7 +43,7 @@ public class HttpUtils {
 			e.printStackTrace();
 		} finally {
 			try {
-				// ¹Ø±ÕÁ¬½Ó,ÊÍ·Å×ÊÔ´
+				// ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Í·ï¿½ï¿½ï¿½Ô´
 				if (response != null) {
 					response.close();
 				}
@@ -64,16 +58,16 @@ public class HttpUtils {
 	}
 
 	/**
-	 * ·¢ËÍ postÇëÇó
+	 * ï¿½ï¿½ï¿½ï¿½ postï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param httpUrl
-	 *            µØÖ·
+	 *            ï¿½ï¿½Ö·
 	 * @param maps
-	 *            ²ÎÊý
+	 *            ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static String sendHttpPost(String httpUrl, Map<String, String> maps) {
-		HttpPost httpPost = new HttpPost(httpUrl);// ´´½¨httpPost
-		// ´´½¨²ÎÊý¶ÓÁÐ
+		HttpPost httpPost = new HttpPost(httpUrl);// ï¿½ï¿½ï¿½ï¿½httpPost
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		for (String key : maps.keySet()) {
 			nameValuePairs.add(new BasicNameValuePair(key, maps.get(key)));
@@ -92,10 +86,10 @@ public class HttpUtils {
 		HttpEntity entity = null;
 		String responseContent = null;
 		try {
-			// ´´½¨Ä¬ÈÏµÄhttpClientÊµÀý.
+			// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½httpClientÊµï¿½ï¿½.
 			httpClient = HttpClients.createDefault();
 			httpPost.setConfig(requestConfig);
-			// Ö´ÐÐÇëÇó
+			// Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			response = httpClient.execute(httpPost);
 			entity = response.getEntity();
 			responseContent = EntityUtils.toString(entity, "UTF-8");
@@ -103,7 +97,7 @@ public class HttpUtils {
 			e.printStackTrace();
 		} finally {
 			try {
-				// ¹Ø±ÕÁ¬½Ó,ÊÍ·Å×ÊÔ´
+				// ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Í·ï¿½ï¿½ï¿½Ô´
 				if (response != null) {
 					response.close();
 				}
@@ -118,7 +112,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * ·¢ËÍGetÇëÇóHttps
+	 * ï¿½ï¿½ï¿½ï¿½Getï¿½ï¿½ï¿½ï¿½Https
 	 * 
 	 * @param httpPost
 	 * @return
@@ -129,13 +123,13 @@ public class HttpUtils {
 		HttpEntity entity = null;
 		String responseContent = null;
 		try {
-			// ´´½¨Ä¬ÈÏµÄhttpClientÊµÀý.
+			// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½httpClientÊµï¿½ï¿½.
 			PublicSuffixMatcher publicSuffixMatcher = PublicSuffixMatcherLoader
 					.load(new URL(httpGet.getURI().toString()));
 			DefaultHostnameVerifier hostnameVerifier = new DefaultHostnameVerifier(publicSuffixMatcher);
 			httpClient = HttpClients.custom().setSSLHostnameVerifier(hostnameVerifier).build();
 			httpGet.setConfig(requestConfig);
-			// Ö´ÐÐÇëÇó
+			// Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			response = httpClient.execute(httpGet);
 			entity = response.getEntity();
 			responseContent = EntityUtils.toString(entity, "UTF-8");
@@ -143,7 +137,7 @@ public class HttpUtils {
 			e.printStackTrace();
 		} finally {
 			try {
-				// ¹Ø±ÕÁ¬½Ó,ÊÍ·Å×ÊÔ´
+				// ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Í·ï¿½ï¿½ï¿½Ô´
 				if (response != null) {
 					response.close();
 				}

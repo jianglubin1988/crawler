@@ -10,11 +10,8 @@ import us.codecraft.webmagic.model.annotation.HelpUrl;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 /**
- * 中国法院网
  * url http://www.chinacourt.org/index.shtml
  * @author robin
- *
- * 备注：链接被拒绝
  */
 @TargetUrl("http://www.chinacourt.org/article/index/id/MzAwNDAwMiAOAAA%3D.shtml")
 @HelpUrl("http://www.chinacourt.org/article/detail/2017/07/\\w+/\\d+.shtml")
@@ -45,7 +42,7 @@ public class ChinaCourtPageProcessor implements AfterExtractor{
 	}
 
 	public static void run() {
-		//启动webmagic
+		//锟斤拷锟斤拷webmagic
 //        OOSpider.create(Site.me().addStartUrl("http://www.chinacourt.org/article/index/id/MzAwNDAwMiAOAAA%3D.shtml"), ChinaCourtPageProcessor.class).run();
         OOSpider.create(Site.me().setSleepTime(1000)
                 , new ConsolePageModelPipeline(), ChinaCourtPageProcessor.class)
