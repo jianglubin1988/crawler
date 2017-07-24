@@ -5,6 +5,7 @@ import java.util.Date;
 import ssm.com.domain.SData;
 import ssm.com.service.impl.SDataServiceImpl;
 import ssm.com.utils.DateUtils;
+import ssm.com.utils.StringUtils;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
@@ -19,8 +20,9 @@ public class DataPipeline implements Pipeline {
 			SData data = new SData();
 			String url = resultItems.getRequest().getUrl();
 			ResultItems items = resultItems;
-			if(items.get("title") != null && items.get("title") != "" && items.get("title") != "null") {
-				data.setTitle(items.get("title").toString());
+			String title = StringUtils.obj2str(items.get("title"));
+			if(title != "") {
+				data.setTitle(title);
 				data.setSource(items.get("source").toString());
 				data.setPubtime(dateUtil.parseDate(items.get("pubtime").toString()));
 				data.setContent(items.get("content").toString());

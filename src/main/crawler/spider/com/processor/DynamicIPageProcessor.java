@@ -27,10 +27,34 @@ public class DynamicIPageProcessor implements IPageProcessor {
 		if (page.getResultItems().get("title") == null || page.getResultItems().get("title") == "") {
 			page.setSkip(true);
 		} else {
-			page.putField("pubtime", page.getHtml().xpath(pageMap.get("pubtime")));
-			page.putField("source", page.getHtml().xpath(pageMap.get("source")));
-			page.putField("content", page.getHtml().xpath(pageMap.get("content")));
-			page.putField("author", page.getHtml().xpath(pageMap.get("author")));
+			String pubtime = pageMap.get("pubtime");
+			if(pubtime == "" || pubtime == "null") {
+				page.putField("pubtime", "");
+			}else {
+				page.putField("pubtime", page.getHtml().xpath(pubtime));
+			}
+			
+			String source = pageMap.get("source");
+			if(source == "" || source == "null") {
+				page.putField("source", "");
+			}else {
+				page.putField("source", page.getHtml().xpath(pageMap.get("source")));
+			}
+			
+			String content = pageMap.get("content");
+			if(content == "" || content == "null") {
+				page.putField("content", "");
+			}else {
+				page.putField("content", page.getHtml().xpath(content));
+			}
+			
+			String author = pageMap.get("author");
+			if(author == "" || author == "null") {
+				page.putField("author", "");
+			}else {
+				page.putField("author", page.getHtml().xpath(author));
+			}
+			
 		}
 	}
 
@@ -40,7 +64,6 @@ public class DynamicIPageProcessor implements IPageProcessor {
 	}
 
 	public void run(Map<String, String> pageMap) {
-		// ����webmagic
 		DynamicSpider.create(new DynamicIPageProcessor()).addPipeline(new DataPipeline()).addUrl(pageMap.get("targetUrl")).thread(5).run(pageMap);
 	}
 

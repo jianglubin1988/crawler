@@ -4,21 +4,7 @@ import java.util.List;
 
 import ssm.com.domain.SData;
 
-public interface SDataService {
-
-	int deleteByPrimaryKey(Integer id);
-
-    int insert(SData record);
-
-    int insertSelective(SData record);
-
-    SData selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(SData record);
-
-    int updateByPrimaryKeyWithBLOBs(SData record);
-
-    int updateByPrimaryKey(SData record);
+public interface SDataService extends CommonService<SData>{
     
     public void saveSDate(SData data);
     

@@ -10,7 +10,6 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 /**
- * Í¬»¨Ë³
  * url http://news.10jqka.com.cn/today_list/
  * @author robin
  *
@@ -21,7 +20,6 @@ public class TonghuashunPageProcessor implements PageProcessor{
 	private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 	
 	public static void run() {
-		//Æô¶¯webmagic
 		Spider.create(new TonghuashunPageProcessor()).addPipeline(new DataPipeline()).addUrl("http://news.10jqka.com.cn/today_list/").thread(5).run();
 	}
 

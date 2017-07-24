@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.com.dao.WebsiteMapper">
+  <resultMap id="BaseResultMap" type="ssm.com.domain.Website">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="targetUrl" jdbcType="VARCHAR" property="targeturl" />
+    <result column="helpUrl" jdbcType="VARCHAR" property="helpurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, targetUrl, helpUrl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_website
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_website
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="ssm.com.domain.Website">
+    insert into s_website (id, targetUrl, helpUrl
+      )
+    values (#{id,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, #{helpurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ssm.com.domain.Website">
+    insert into s_website
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="targeturl != null">
+        targetUrl,
+      </if>
+      <if test="helpurl != null">
+        helpUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="targeturl != null">
+        #{targeturl,jdbcType=VARCHAR},
+      </if>
+      <if test="helpurl != null">
+        #{helpurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ssm.com.domain.Website">
+    update s_website
+    <set>
+      <if test="targeturl != null">
+        targetUrl = #{targeturl,jdbcType=VARCHAR},
+      </if>
+      <if test="helpurl != null">
+        helpUrl = #{helpurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ssm.com.domain.Website">
+    update s_website
+    set targetUrl = #{targeturl,jdbcType=VARCHAR},
+      helpUrl = #{helpurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
