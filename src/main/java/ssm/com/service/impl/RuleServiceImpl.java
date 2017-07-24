@@ -1,10 +1,24 @@
 package ssm.com.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import ssm.com.dao.RuleMapper;
 import ssm.com.domain.Rule;
 import ssm.com.service.RuleService;
-
+@Service("RuleService")
 public class RuleServiceImpl implements RuleService {
+	
+	private static Logger log = Logger.getLogger(RuleServiceImpl.class);
 
+	@Resource
+	private RuleMapper mapper;
+	
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub
@@ -13,8 +27,14 @@ public class RuleServiceImpl implements RuleService {
 
 	@Override
 	public int insert(Rule record) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try {
+			result = mapper.insert(record);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+		}
+		return result;
 	}
 
 	@Override
@@ -39,6 +59,18 @@ public class RuleServiceImpl implements RuleService {
 	public int updateByPrimaryKey(Rule record) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Rule> selectByWebsiteKey(Integer webId) {
+		List<Rule> result = new ArrayList<Rule>();
+		try {
+			result = mapper.selectByWebsiteKey(webId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+		}
+		return result;
 	}
 
 }

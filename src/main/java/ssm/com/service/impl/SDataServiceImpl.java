@@ -8,12 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import ssm.com.dao.SDataMapper;
-import ssm.com.domain.Rule;
 import ssm.com.domain.SData;
 import ssm.com.service.SDataService;
 import ssm.com.utils.SqlSessionUtils;
 
-@Service("TestService")
+@Service("SDataService")
 public class SDataServiceImpl implements SDataService {
 	
 	@Resource
@@ -56,13 +55,7 @@ public class SDataServiceImpl implements SDataService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public int insert(Rule record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	@Override
 	public int insertSelective(SData record) {
 		// TODO Auto-generated method stub
@@ -83,6 +76,12 @@ public class SDataServiceImpl implements SDataService {
 
 	@Override
 	public int updateByPrimaryKey(SData record) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insert(SData record) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

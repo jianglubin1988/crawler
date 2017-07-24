@@ -1,12 +1,10 @@
 package ssm.com.service;
 
-import ssm.com.domain.Rule;
-
 public interface CommonService<T> {
 
 	int deleteByPrimaryKey(Integer id);
 
-    int insert(Rule record);
+    int insert(T record);
 
     int insertSelective(T record);
 

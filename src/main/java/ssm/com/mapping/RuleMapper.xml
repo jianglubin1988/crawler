@@ -79,4 +79,11 @@
       rule = #{rule,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByWebsiteKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_rule
+    where webId = #{webId,jdbcType=INTEGER}
+  </select>
 </mapper>
