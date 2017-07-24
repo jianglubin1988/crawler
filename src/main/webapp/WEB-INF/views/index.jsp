@@ -1,11 +1,11 @@
 <%@include file="_header.jsp"%>
 <script type="text/javascript">
 	$(function(){
-		console.log('hahahhah');
+		console.log('index');
 	})
 </script>
 
 <body>
-ssss
+index
 </body>
 </html>

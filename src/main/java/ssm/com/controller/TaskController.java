@@ -13,10 +13,10 @@ import ssm.com.domain.SData;
 import ssm.com.service.SDataService;
 
 @Controller
-@RequestMapping("/admin/crawler")
-public class CrawlerController {
+@RequestMapping("/admin/task")
+public class TaskController {
 	
-	private static Logger log = Logger.getLogger(CrawlerController.class);
+	private static Logger log = Logger.getLogger(TaskController.class);
 
 	@Resource
 	private SDataService dataService;

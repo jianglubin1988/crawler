@@ -1,7 +1,7 @@
 <%@include file="_header.jsp"%>
 <script type="text/javascript">
 	$(function(){
-		console.log('hahahhah');
+		console.log('login');
 	})
 </script>
 
