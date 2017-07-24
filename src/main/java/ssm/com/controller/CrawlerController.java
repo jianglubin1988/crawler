@@ -3,6 +3,7 @@ package ssm.com.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,10 @@ import ssm.com.domain.SData;
 import ssm.com.service.SDataService;
 
 @Controller
-@RequestMapping("/crawler")
+@RequestMapping("/admin/crawler")
 public class CrawlerController {
 	
-//	private static Logger log = Logger.getLogger(CrawlerController.class);
+	private static Logger log = Logger.getLogger(CrawlerController.class);
 
 	@Resource
 	private SDataService dataService;
@@ -26,9 +27,10 @@ public class CrawlerController {
 		try {
 			SData data = this.dataService.selectByPrimaryKey(1);
 			mv.addObject("data",data);
-			mv.setViewName("/test");
+			mv.setViewName("/index");
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage());
 		}
 		return mv;
 	}
