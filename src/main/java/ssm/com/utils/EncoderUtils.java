@@ -8,6 +8,9 @@ import com.sun.mail.util.BASE64EncoderStream;
 
 public class EncoderUtils {
 	
+	private static final String ENCODE_PREFIX = "md5_";
+	private static final String ENCODE_SUFFIX = "_crawler";
+	
 	/**
 	 * MD5加密
 	 * @param pwd
@@ -17,6 +20,7 @@ public class EncoderUtils {
 	 */
 	public static String encodeByMd5(String pwd) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		pwd = EncoderUtils.ENCODE_PREFIX + pwd + EncoderUtils.ENCODE_SUFFIX;
 		byte[] result = BASE64EncoderStream.encode(md5.digest(pwd.getBytes("utf-8")));
 		return new String(result, "utf-8");
 	}
