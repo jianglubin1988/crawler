@@ -1,0 +1,254 @@
+@charset "utf-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+/* 主结构样式 */
+
+
+.container {
+	width: 1680px;
+	padding: 0;
+	position: relative;
+}
+
+
+@media (min-width: 0px) {
+	.container {width: 1400px;}
+	#header .container{width: 100%;}
+}
+
+@media (min-width: 1300px) {
+	.container {width: 1400px;}
+	#header .container{width: 100%;}
+}
+
+@media (min-width: 1700px) {
+	.container {width: 1680px;}
+	#header .container{width: 1680px;}
+
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    &:after,
+    &:before {
+        display: table;
+        content: '';
+        clear: both;
+    }
+}
+
+.banner {
+    width: 100%;
+    img {
+        display: block;
+        width: 100%;
+        max-height: 550px;
+        height: auto;
+    }
+}
+
+.err-info{
+    background: url('../../images/error-trangle.png') no-repeat;
+    background-size: 13px 13px;
+    background-position: left;
+    font-size: 13px;
+    padding: 0 20px;
+    margin: 0 5px;
+    color: red;
+}
+
+
+/* 头部样式 */
+#header {
+	position: relative;
+	top: 0;
+	height: 80px;
+    width: 100%;
+	line-height: 80px;
+	background-color: $color-primary;
+	box-shadow: 0 3px 5px #ddd;
+	z-index:999;
+    display: table;
+	.logo {
+        display: table-cell;
+        width: 50%;
+		position: relative;
+		font-size: 24px;
+        left: 100px;
+        bottom: 15px;
+		a {
+			color: #fff;
+			img{
+				float: left;
+                width: 200px;
+			}
+			p{
+				float: left;
+				padding: 0 8px;
+			}
+		}
+	}
+    .login-info{
+        display: table-cell;
+        width: 600px;
+        float: right;
+        span{
+            color: $color-head;
+            font-size: $font-size-title-small;
+            float: left;
+            width: 280px;
+            cursor: default;
+            white-space: nowrap;
+            @include text-ellipsis;
+        }
+        li{
+            float: left;
+            padding: 0 20px;
+            cursor: pointer;
+            margin-top: 30px;
+            position: relative;
+            span{
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                &.company-ico{
+                    background: url('../../images/house.png') no-repeat;
+                }
+                &.company-ico:hover{
+                    background: url('../../images/company-hover-2x.png') no-repeat;
+                }
+                &.people-ico{
+                    background: url('../../images/people.png') no-repeat;
+                }
+                &.people-ico:hover{
+                    background: url('../../images/people-hover.png') no-repeat;
+                }
+                &.setting-ico{
+                    background: url('../../images/setting.png') no-repeat;
+                }
+                &.setting-ico:hover{
+                    background: url('../../images/setting-hover.png') no-repeat;
+                }
+            }
+            &.trigger-menu:hover div{
+                display: block;
+            }
+            .menu{
+                width: 100px;
+                height: 80px;
+                position: absolute;
+                right: 15px;
+                top: 30px;
+                display: none;
+                overflow: hidden;
+                text-align: center;
+                z-index: 9999;
+                .arrow-up{
+                    position: relative;
+                    left: 67px;
+                    @include arrow-up(10px, #EDEDED);
+                }
+                p{
+                    background-color: #EDEDED;
+                    border-bottom: 1px solid $color-info;
+                    line-height: 35px;
+                    &:hover{
+                        background-color: #979797;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    .vertical-line{
+        display: block;
+        width: 2px;
+        height: 60px;
+        background-color: $color-welcome;
+        float: left;
+        margin: 10px 10px 10px 50px;
+    }
+    .unlogin-logo{
+        background-color: $color-primary;
+        padding: 10px 100px;
+        img{
+            width: 200px;
+        }
+        p{
+            height: 80px;
+            line-height: 80px;
+            position: absolute;
+            top: 10px;
+            right: 80px;
+            span{
+                height: 40px;
+                line-height: 40px;
+                margin: 10px;
+                a{
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: bold;
+                    &:hover{
+                        color: $color-head;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* 正文样式 */
+#wrap {
+	padding-top:95px;
+    >.container{
+    	background: url(../../images/navbg.png) repeat-y;
+    }
+}
+
+
+/* 导航样式 */
+#nav {
+
+}
+
+#content {
+    min-height: 727px;
+}
+.content-title{
+	font-size:$font-size-title-large;
+	color:$color-title;
+	margin-bottom:20px;
+}
+.content-main {
+	position: relative;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	min-height:500px;
+}
+
+/* 页尾样式 */
+.footer{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background-color: $color-background;
+    overflow: hidden;
+    .copyright{
+        width: 600px;
+        position: relative;
+        left: 50%;
+        margin: 0 0 15px -300px;
+        font-size: $font-size-title-small;
+        color: $color-info;
+    }
+}
+
+.breadcrumb{
+    padding: 0 20px;
+    span{
+        color: $color-info;
+    }
+}

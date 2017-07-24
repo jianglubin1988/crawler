@@ -1,0 +1,53 @@
+@charset "utf-8";
+@import "../base/_mixin.scss";
+@import "../base/_global.scss";
+
+html,body{
+	height:100%;
+}
+.red{
+    color: red;
+}
+.content{
+    width: 100%;
+    min-height: 780px;
+    padding: 10px;
+    .datatable{
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        .title{
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+            border-bottom: 1px solid #E6E9ED;
+        }
+        .table{
+            width: 960px;
+            margin: 20px auto;
+            tr{
+                td{
+                    border: none;
+                    font-size: 16px;
+                    height: 50px;
+                    a{
+                        cursor: pointer;
+                    }
+                }
+                td:first-child,td:nth-child(3){
+                    text-align: right;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.form-pwd{
+    .form-group{
+        .btn{
+            margin: 5px;
+            width: 80px;
+        }
+    }
+}

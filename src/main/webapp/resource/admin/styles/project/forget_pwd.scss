@@ -1,0 +1,63 @@
+@charset "utf-8";
+@import "../base/_mixin.scss";
+@import "../base/_global.scss";
+html,body{
+	height:100%;
+}
+.container{
+	background-color: $color-background;
+	border: none;
+	margin-top: 0px;
+}
+
+.label{
+	position: relative;
+	right: 48px;
+	top: 50px;
+}
+
+.red{
+	color: red;
+}
+
+.form{
+	display: block;
+	margin: 0 auto;
+	width: 700px;
+	border: 2px solid $border-color;
+	background-color: #fff;
+	padding: 20px;
+	margin-top: 150px;
+	height: 400px;
+	.form-horizontal{
+		display: block;
+		margin: 0 auto;
+		height: 350px;
+		width: 500px;
+		padding-top: 80px;
+		.control-label{
+			cursor: default;
+		}
+		.col-sm-5{
+			width: 49%;
+		}
+		.col-register{
+			width: 60%;
+		}
+		.btn-register{
+			display: block;
+			width: 120px;
+			margin: 0 auto;
+		}
+	}
+	.register-logo{
+		display: block;
+		width: 100%;
+		margin: 20px;
+		img{
+			display: block;
+			width: 200px;
+			margin: 0 auto;
+		}
+	}
+}

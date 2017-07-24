@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>xLinkSelect2 Demo</title>
+<link rel="stylesheet" href="../skin/xLinkSelect2.css">
+<script src="js/jquery.min.js"></script>
+<!-- <script src="js/zepto.min.js"></script> -->
+<script src="../xLinkSelect2.js"></script>
+<script src="../xLinkSelect2_pinyin.js"></script>
+<script>
+var data = [
+	{"id":"1", "pid":"0", "title": "北京市"},
+	{"id":"2", "pid":"0", "title": "上海市"},
+	{"id":"3", "pid":"0", "title": "天津市"},
+	{"id":"4", "pid":"0", "title": "重庆市"},
+	{"id":"5", "pid":"0", "title": "浙江省"},
+	{"id":"6", "pid":"0", "title": "江苏省"},
+	{"id":"7", "pid":"0", "title": "广东省"},
+	{"id":"8", "pid":"0", "title": "福建省"},
+	{"id":"9", "pid":"0", "title": "湖南省"},
+	{"id":"10", "pid":"0", "title": "湖北省"},
+	{"id":"11", "pid":"0", "title": "辽宁省"},
+	{"id":"12", "pid":"0", "title": "吉林省"},
+	{"id":"13", "pid":"0", "title": "黑龙江省"},
+	{"id":"14", "pid":"0", "title": "河北省"},
+	{"id":"15", "pid":"0", "title": "河南省"},
+	{"id":"16", "pid":"0", "title": "山东省"},
+	{"id":"17", "pid":"0", "title": "陕西省"},
+	{"id":"18", "pid":"0", "title": "甘肃省"},
+	{"id":"19", "pid":"0", "title": "青海省"},
+	{"id":"20", "pid":"0", "title": "新疆"},
+	{"id":"21", "pid":"0", "title": "山西省"},
+	{"id":"22", "pid":"0", "title": "四川省"},
+	{"id":"23", "pid":"0", "title": "贵州省"},
+	{"id":"24", "pid":"0", "title": "安徽省"},
+	{"id":"25", "pid":"0", "title": "江西省"},
+	{"id":"26", "pid":"0", "title": "云南省"},
+	{"id":"27", "pid":"0", "title": "内蒙古"},
+	{"id":"28", "pid":"0", "title": "广西"},
+	{"id":"29", "pid":"0", "title": "西藏"},
+	{"id":"30", "pid":"0", "title": "宁夏"},
+	{"id":"31", "pid":"0", "title": "海南省"},
+	{"id":"32", "pid":"0", "title": "香港"},
+	{"id":"33", "pid":"0", "title": "澳门"},
+	{"id":"34", "pid":"0", "title": "台湾"},
+	{"id":"35", "pid":"0", "title": "其他"},
+
+	{"id":"110", "pid":"11", "title": "沈阳市"},
+	{"id":"111", "pid":"11", "title": "大连市"},
+	{"id":"112", "pid":"11", "title": "鞍山市"},
+	{"id":"113", "pid":"11", "title": "抚顺市"},
+	{"id":"114", "pid":"11", "title": "本溪市"},
+	{"id":"115", "pid":"11", "title": "丹东市"},
+	{"id":"116", "pid":"11", "title": "锦州市"},
+	{"id":"117", "pid":"11", "title": "营口市"},
+	{"id":"118", "pid":"11", "title": "阜新市"},
+	{"id":"119", "pid":"11", "title": "辽阳市"},
+	{"id":"120", "pid":"11", "title": "盘锦市"},
+	{"id":"121", "pid":"11", "title": "铁岭市"},
+	{"id":"122", "pid":"11", "title": "朝阳市"},
+	{"id":"123", "pid":"11", "title": "葫芦岛市"},
+
+	{"id":"11001", "pid":"110", "title": "皇姑区"},
+	{"id":"11002", "pid":"110", "title": "和平区"},
+	{"id":"11003", "pid":"110", "title": "沈河区"},
+	{"id":"11004", "pid":"110", "title": "铁西区"},
+	{"id":"11005", "pid":"110", "title": "于洪区"},
+	{"id":"11006", "pid":"110", "title": "东陵区"},
+	{"id":"11007", "pid":"110", "title": "苏家屯区"},
+
+	{"id":"11401", "pid":"114", "title": "西湖区"},
+	{"id":"11402", "pid":"114", "title": "平山区"},
+	{"id":"11403", "pid":"114", "title": "明山区"},
+	{"id":"11404", "pid":"114", "title": "南芬区"},
+
+];
+
+$(function(){
+	$('[role="linkSelect2"]').xLinkSelect2({
+
+		// data: data,
+		returnJoinChar : ' ',
+		cache : true,
+		// showIndexBar:false,
+		showBtn : false,
+		ajaxUrl : 'data.php',
+		onSelect : function(data){
+
+
+		},
+		onReturn : function(data){
+			console.debug(data);
+		}
+		// ajaxUrl : 'data.json'
+	});
+});
+</script>
+
+</head>
+<body>
+
+<input type="text" role="linkSelect2" role-opts="{showBtn : true,levelTitles:['省','市']}" value="">
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+@charset "utf-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+/*
+	基础样式
+ */
+*{ outline: none !important; }
+html,body{font-family: Microsoft YaHei; background: #fff; font-size: 14px;}
+a{ color:$color-link;}
+a:hover{color:$color-link-hover; text-decoration: none;}
+label{ color:$color-info; cursor: pointer; margin-bottom: 0; font-weight: normal}
+p { margin-bottom: 0}
+ul, li { list-style: none; padding: 0; margin: 0;}
+h1, h2 { margin: 0}
+i, dfn { font-style: normal;}
+h1,h2,h3,h4{ font-size:$font-size-title; color:$color-title;}

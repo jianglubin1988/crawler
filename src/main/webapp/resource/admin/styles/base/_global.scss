@@ -1,0 +1,106 @@
+@charset "utf-8";
+//全局配置
+$input-height : 36px;					//默认输入项目高
+$radius : 2px;							//全局圆角
+
+//主色
+$color-primary : #4990E2;
+$color-primary-invert : #fff;
+
+//危险色
+$color-danger : #ff5253;
+$color-danger-invert : #fff;
+
+//成功色
+$color-success : #46ba89;
+$color-success-invert : #fff;
+
+//警告色
+$color-warning : #ffb914;
+$color-warning-invert : #fff;
+
+//标题色 一般黑色
+$color-title : #4a4a4a;
+
+//内容色 一般灰黑色
+$color-info : #9b9b9b;
+
+//导航头文字颜色
+$color-head: #DAE8F9;
+
+//登录信息
+$color-welcome: #DAE8F9;
+
+//背景色
+$color-background: #F3F7F8;
+$color-container: #fff;
+
+//水平线颜色
+$color-horizontal: #CDD3DF;
+
+//链接色
+$color-link : $color-primary;
+$color-link-hover : darken($color-primary,10%);
+
+//字号
+$font-size-title : 16px;
+$font-size-title-small : 14px;
+$font-size-title-large : 18px;
+$font-size-info : 14px;
+
+//禁用
+$disabled-border-color : #ececec;
+$disabled-font-color : #9f9f9f;
+$disabled-bg-color : #ececec;
+
+//边框颜色
+$border-color : #efefef;
+$border-hover-color : #d6d6d6;
+
+$border-input-color:#ccc;
+
+//内容容器
+$info-radius : $radius;
+$info-padding : 8px 15px;
+$info-font-size : $font-size-info;
+$info-font-color : $color-info;
+
+$info-line-height : 1.6;
+$info-border-color : #e0e0e0;
+$info-bg-color : #FFFFFF;
+
+$info-success-border-color: #D6E9C6;
+$info-success-bg-color: #EAF6E6;
+$info-success-font-color: #3C763D;
+
+$info-danger-border-color: #EBCCD1;
+$info-danger-bg-color: #F2DEDE;
+$info-danger-font-color: #A94442;
+
+$info-warning-border-color: #faebcc;
+$info-warning-bg-color: #fcf8e3;
+$info-warning-font-color: #8a6d3b;
+
+//表单输入
+$input-animate-speed : 0.1s;
+$input-radius : $radius;
+$input-font-size : $font-size-title;
+$input-font-color : $color-title;
+$input-bg-color : #fff;
+$input-height : $input-height;
+$input-padding : 5px 5px;
+$input-border-color : #c5c5c5;
+
+$input-checkbox-color : $color-primary;
+$input-radio-color : $color-primary;
+$input-multiple-height : 100px;
+$input-addon-bg-color : #ccc;
+
+//hover
+$input-hover-border-color : darken($input-border-color,15%);
+
+//focus
+$input-focus-border-color : $color-primary;
+
+//disabled
+$input-disabled-bg-color : #f0f0f0;

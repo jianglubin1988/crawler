@@ -1,0 +1,188 @@
+@charset "UTF-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+/* 未加载完成的不显示 */
+[v-cloak] {display: none;}
+
+$vue-animate-speed : 0.3s;
+
+/*
+	vue 过渡特效，依赖 animate.css 库
+	demo : <div transition="vue-fade" v-show="true"></div>
+
+	vue-flash
+	vue-pulse
+	vue-rubber
+	vue-shake
+	vue-swing
+	vue-tada
+	vue-wobble
+	vue-jello
+	vue-hinge
+
+	vue-bounce
+	vue-bounce-up
+	vue-bounce-right
+	vue-bounce-down
+	vue-bounce-left
+
+	vue-fade
+	vue-fade-up
+	vue-fade-up-big
+	vue-fade-right
+	vue-fade-right-big
+	vue-fade-down
+	vue-fade-down-big
+	vue-fade-left
+	vue-fade-left-big
+
+	vue-flip-x
+	vue-flip-y
+
+	vue-light-speed
+
+	vue-rotate
+	vue-rotate-up-left
+	vue-rotate-up-right
+	vue-rotate-down-left
+	vue-rotate-down-right
+
+	vue-slide-up
+	vue-slide-right
+	vue-slide-down
+	vue-slide-left
+
+	vue-zoom
+	vue-zoom-up
+	vue-zoom-right
+	vue-zoom-down
+	vue-zoom-left
+
+	vue-roll
+*/
+
+
+
+
+/* Attention Seekers */
+.vue-flash-enter {animation: flash $vue-animate-speed; }
+.vue-pulse-enter {animation: pulse $vue-animate-speed; }
+.vue-rubberBand-enter {animation: rubberBand $vue-animate-speed; }
+.vue-shake-enter {animation: shake $vue-animate-speed; }
+.vue-swing-enter {animation: swing $vue-animate-speed; }
+.vue-tada-enter {animation: tada $vue-animate-speed; }
+.vue-wobble-enter {animation: wobble $vue-animate-speed; }
+.vue-jello-enter {animation: jello $vue-animate-speed; }
+.vue-hinge-enter {animation: hinge $vue-animate-speed; }
+
+/* Bouncing Entrances */
+.vue-bounce-enter {animation: bounceIn $vue-animate-speed; }
+.vue-bounce-leave {animation: bounceOut $vue-animate-speed; }
+
+.vue-bounce-up-enter {animation: bounceInUp $vue-animate-speed; }
+.vue-bounce-up-leave {animation: bounceOutUp $vue-animate-speed; }
+
+.vue-bounce-right-enter {animation: bounceInRight $vue-animate-speed; }
+.vue-bounce-right-leave {animation: bounceOutRight $vue-animate-speed; }
+
+.vue-bounce-down-enter {animation: bounceInDown $vue-animate-speed; }
+.vue-bounce-down-leave {animation: bounceOutDown $vue-animate-speed; }
+
+.vue-bounce-left-enter {animation: bounceInLeft $vue-animate-speed; }
+.vue-bounce-left-leave {animation: bounceOutLeft $vue-animate-speed; }
+
+
+/* Fading Entrances */
+.vue-fade-enter {animation: fadeIn $vue-animate-speed; }
+.vue-fade-leave {animation: fadeOut $vue-animate-speed; }
+
+.vue-fade-up-enter {animation: fadeInUp $vue-animate-speed; }
+.vue-fade-up-leave {animation: fadeOutDown $vue-animate-speed; }
+
+.vue-fade-up-big-enter {animation: fadeInUpBig $vue-animate-speed; }
+.vue-fade-up-big-leave {animation: fadeOutUpBig $vue-animate-speed; }
+
+.vue-fade-right-enter {animation: fadeInRight $vue-animate-speed; }
+.vue-fade-right-leave {animation: fadeOutRight $vue-animate-speed; }
+
+.vue-fade-right-big-enter {animation: fadeInRightBig $vue-animate-speed; }
+.vue-fade-right-big-leave {animation: fadeOutRightBig $vue-animate-speed; }
+
+.vue-fade-down-enter {animation: fadeInDown $vue-animate-speed; }
+.vue-fade-down-leave {animation: fadeOutUp $vue-animate-speed; }
+
+.vue-fade-down-big-enter {animation: fadeInDownBig $vue-animate-speed; }
+.vue-fade-down-big-leave {animation: fadeOutDownBig $vue-animate-speed; }
+
+.vue-fade-left-enter {animation: fadeInLeft $vue-animate-speed; }
+.vue-fade-left-leave {animation: fadeOutLeft $vue-animate-speed; }
+
+.vue-fade-left-big-enter {animation: fadeInLeftBig $vue-animate-speed; }
+.vue-fade-left-big-leave {animation: fadeOutLeftBig $vue-animate-speed; }
+
+
+/* Flippers */
+.vue-flip-x-enter {animation: flipInX $vue-animate-speed; }
+.vue-flip-x-leave {animation: flipOutX $vue-animate-speed; }
+
+.vue-flip-y-enter {animation: flipInY $vue-animate-speed; }
+.vue-flip-y-leave {animation: flipOutY $vue-animate-speed; }
+
+
+/* Lightspeed */
+.vue-light-speed-enter {animation: lightSpeedIn $vue-animate-speed; }
+.vue-light-speed-leave {animation: lightSpeedOut $vue-animate-speed; }
+
+
+/* Rotating Entrances */
+.vue-rotate-enter {animation: rotateIn $vue-animate-speed; }
+.vue-rotate-leave {animation: rotateOut $vue-animate-speed; }
+
+.vue-rotate-up-left-enter {animation: rotateInUpLeft $vue-animate-speed; }
+.vue-rotate-up-left-leave {animation: rotateOutUpLeft $vue-animate-speed; }
+
+.vue-rotate-up-right-enter {animation: rotateInUpRight $vue-animate-speed; }
+.vue-rotate-up-right-leave {animation: rotateOutUpRight $vue-animate-speed; }
+
+.vue-rotate-down-left-enter {animation: rotateInDownLeft $vue-animate-speed; }
+.vue-rotate-down-left-leave {animation: rotateOutDownLeft $vue-animate-speed; }
+
+.vue-rotate-down-right-enter {animation: rotateInDownRight $vue-animate-speed; }
+.vue-rotate-down-right-leave {animation: rotateOutDownRight $vue-animate-speed; }
+
+
+/* Sliding Entrances */
+.vue-slide-up-enter {animation: slideInUp $vue-animate-speed; }
+.vue-slide-up-leave {animation: slideOutUp $vue-animate-speed; }
+
+.vue-slide-right-enter {animation: slideInRight $vue-animate-speed; }
+.vue-slide-right-leave {animation: slideOutRight $vue-animate-speed; }
+
+.vue-slide-down-enter {animation: slideInDown $vue-animate-speed; }
+.vue-slide-down-leave {animation: slideOutDown $vue-animate-speed; }
+
+.vue-slide-left-enter {animation: slideInLeft $vue-animate-speed; }
+.vue-slide-left-leave {animation: slideOutLeft $vue-animate-speed; }
+
+
+/* Zoom Entrances */
+.vue-zoom-enter {animation: zoomIn $vue-animate-speed; }
+.vue-zoom-leave {animation: zoomOut $vue-animate-speed; }
+
+.vue-zoom-up-enter {animation: zoomInUp $vue-animate-speed; }
+.vue-zoom-up-leave {animation: zoomOutUp $vue-animate-speed; }
+
+.vue-zoom-right-enter {animation: zoomInRight $vue-animate-speed; }
+.vue-zoom-right-leave {animation: zoomOutRight $vue-animate-speed; }
+
+.vue-zoom-down-enter {animation: zoomInDown $vue-animate-speed; }
+.vue-zoom-down-leave {animation: zoomOutDown $vue-animate-speed; }
+
+.vue-zoom-left-enter {animation: zoomInLeft $vue-animate-speed; }
+.vue-zoom-left-leave {animation: zoomOutLeft $vue-animate-speed; }
+
+
+/* Specials */
+.vue-roll-enter {animation: rollIn $vue-animate-speed; }
+.vue-roll-leave {animation: rollOut $vue-animate-speed; }

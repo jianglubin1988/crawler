@@ -1,0 +1,78 @@
+@charset "utf-8";
+@import "../base/_mixin.scss";
+@import "../base/_global.scss";
+
+.red{
+	color: red!important;
+}
+
+.green{
+	color:green!important;
+}
+
+.warning-overview{
+	width: 100%;
+	padding: 0 20px;
+	p{
+		width: 100%;
+		height: 60px;
+		line-height: 60px;
+		border: 1px solid $border-color;
+		span{
+			display: inline-block;
+			margin: 0 20px;
+			width: 150px;
+			color: #000;
+		}
+	}
+	.title{
+		background-color: #F8F8F8;
+		font-weight: bold;
+		font-size: 18px;
+		border-bottom: 0px;
+		border-top: 2px solid $border-color;
+	}
+	.overview{
+		border-top: none;
+		width: 100%;
+		span{
+			width: 200px;
+		}
+	}
+}
+
+.query{
+		padding:20px 20px 0px 20px;
+		width: 100%;
+		span{
+			width: 30%;
+			display: inline;
+			margin: 0 20px;
+			input{
+				min-width: 120px;
+				height: 30px;
+				display: inline;
+			}
+			select{
+				min-width: 120px;
+				height: 30px;
+			}
+		}
+	}
+
+.datatable{
+	padding: 20px;
+	.ui-table-data{
+		border: 1px solid $border-color;
+		td{
+			padding: 10px 10px;
+			font-size: 12px;
+		}
+	}
+	.ui-container-page{
+		padding: 15px 10px;
+	}
+	.ui-table-data-operating{
+		cursor: pointer;
+	}
+}

@@ -1,0 +1,440 @@
+@charset "utf-8";
+//公共函数库
+//author:aiv367
+//update:2016/05/27
+
+// 内容 mixin-------------------------------------------------------------------------------------------------
+
+// 半透明 $opacity:透明度(0-1)
+@mixin opacity($opacity){
+	opacity:$opacity;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity = ($opacity*10));
+}
+
+// 文本溢出省略号
+@mixin text-ellipsis(){
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+//英文换行
+@mixin wrap(){
+	table-layout:fixed;
+	word-break: break-all;
+	overflow:hidden;
+}
+
+// 不能被选择
+@mixin noselect(){
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+// User select
+@mixin user-select($select) {
+	-webkit-user-select: $select;
+	-moz-user-select: $select;
+	-ms-user-select: $select;
+	-o-user-select: $select;
+	user-select: $select;
+}
+
+// box阴影
+@mixin boxshadow(){
+	box-shadow: 0 3px 5px #ccc;
+}
+
+
+// 移动端 & 系统 mixin-------------------------------------------------------------------------------------------------
+
+// 中文版chrome浏览器里字体显示仍为12px,
+@mixin text-size-adjust($value : 100%){
+	-webkit-text-size-adjust: $value;
+	-ms-text-size-adjust: $value;
+}
+
+@mixin resizable($direction) {
+	resize: $direction;
+	overflow: auto;
+}
+
+//惯性滑动
+@mixin inertial-scrolling(){
+	-webkit-overflow-scrolling: touch;
+}
+
+//android 不弹出菜单
+@mixin touch-callout(){
+	-webkit-touch-callout: none;
+}
+
+//隐藏移动设备单击高亮区域
+@mixin hide-tap-highlight-color(){
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// 改变 placeholder 颜色
+@mixin placeholder($color: $input-color-placeholder) {
+	&:-moz-placeholder            { color: $color; }
+	&::-moz-placeholder           { color: $color; }
+	&:-ms-input-placeholder       { color: $color; }
+	&::-webkit-input-placeholder  { color: $color; }
+}
+
+
+
+// transition mixin -------------------------------------------------------------------------------------------------
+
+// 调用 animation 动画
+// $name:调用的动画名称
+// $time:执行时间
+// $timing:过度样式 linear ease ease-in ease-out ease-in-out
+// $count:动画执行次数 n infinite(无限次)
+// $mode:
+//    none：默认值。不设置对象动画之外的状态,
+//    forwards：设置对象状态为动画结束时的状态
+//    backwards：设置对象状态为动画开始时的状态
+//    both：设置对象状态为动画结束或开始的状态
+@mixin animation($name:'',$time:0.5s,$timing:linear,$count:3,$mode : both)
+{
+	-webkit-animation-name: $name;
+	-webkit-animation-duration:$time;
+	-webkit-animation-timing-function:$timing;
+	-webkit-animation-iteration-count:$count;
+	-webkit-animation-fill-mode: $mode;
+	animation-name: $name;
+	animation-duration:$time;
+	animation-timing-function:$timing;
+	animation-iteration-count:$count;
+	animation-fill-mode: $mode;
+}
+
+@mixin animate($speed : 0.2s){
+	-webkit-transition:-webkit-transform $speed linear,all $speed linear;
+	transition:transform $speed linear, all $speed linear;
+}
+
+@mixin animate-color($speed : 0.2s){
+	-webkit-transition: -webkit-transform $speed linear, border $speed linear, color $speed linear, box-shadow $speed linear, background-color $speed linear;
+	transition: transform $speed linear, border $speed linear, color $speed linear, box-shadow $speed linear, background-color $speed linear;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+@mixin transition-delay($transition-delay) {
+	-webkit-transition-delay: $transition-delay;
+	-moz-transition-delay: $transition-delay;
+	-o-transition-delay: $transition-delay;
+	transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+	-webkit-transition-duration: $transition-duration;
+	-moz-transition-duration: $transition-duration;
+	-o-transition-duration: $transition-duration;
+	transition-duration: $transition-duration;
+}
+
+// transform mixin -------------------------------------------------------------------------------------------------
+
+//旋转deg
+@mixin rotate($degrees) {
+	-webkit-transform: rotate($degrees);
+	-moz-transform: rotate($degrees);
+	-ms-transform: rotate($degrees);
+	-o-transform: rotate($degrees);
+	transform: rotate($degrees);
+}
+
+//缩放
+@mixin scale($ratio) {
+	-webkit-transform: scale($ratio);
+	-moz-transform: scale($ratio);
+	-ms-transform: scale($ratio);
+	-o-transform: scale($ratio);
+	transform: scale($ratio);
+}
+
+//坐标
+@mixin translate($x, $y) {
+	-webkit-transform: translate($x, $y);
+	-moz-transform: translate($x, $y);
+	-ms-transform: translate($x, $y);
+	-o-transform: translate($x, $y);
+	transform: translate($x, $y);
+}
+
+//倾斜
+@mixin skew($x, $y) {
+	-webkit-transform: skew($x, $y);
+	-moz-transform: skew($x, $y);
+	-ms-transform: skewX($x) skewY($y);
+	-o-transform: skew($x, $y);
+	transform: skew($x, $y);
+	-webkit-backface-visibility: hidden;
+}
+
+
+// 渐变色 mixin -------------------------------------------------------------------------------------------------
+
+// 水平渐变
+@mixin gradient-horizontal($startColor: #555, $endColor: #333) {
+	background-color: $endColor;
+	background-image: -moz-linear-gradient(left, $startColor, $endColor);
+	background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor));
+	background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+	background-image: -o-linear-gradient(left, $startColor, $endColor);
+	background-image: linear-gradient(to right, $startColor, $endColor);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='argb($startColor)', endColorstr='argb($endColor)', GradientType=1);
+}
+
+//垂直渐变
+@mixin gradient-vertical($startColor: #555, $endColor: #333) {
+	background-color: $endColor;
+	background-image: -moz-linear-gradient(top, $startColor, $endColor);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor));
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+	background-image: -o-linear-gradient(top, $startColor, $endColor);
+	background-image: linear-gradient(to bottom, $startColor, $endColor);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='argb($startColor)', endColorstr='argb($endColor)', GradientType=0);
+}
+
+//方向渐变
+@mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
+	background-color: $endColor;
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient($deg, $startColor, $endColor);
+	background-image: -webkit-linear-gradient($deg, $startColor, $endColor);
+	background-image: -o-linear-gradient($deg, $startColor, $endColor);
+	background-image: linear-gradient($deg, $startColor, $endColor);
+}
+
+//三色水平渐变
+@mixin gradient-horizontal-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+	background-color: mix($midColor, $endColor, 80%);
+	background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+	background-image: -webkit-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+	background-image: -moz-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+	background-image: -o-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+	background-image: linear-gradient(to right, $startColor, $midColor $colorStop, $endColor);
+	background-repeat: no-repeat;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='argb($startColor)', endColorstr='argb($endColor)', GradientType=0);
+}
+
+//三色垂直渐变
+@mixin gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+	background-color: mix($midColor, $endColor, 80%);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+	background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
+	background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+	background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
+	background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
+	background-repeat: no-repeat;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0),argb($startColor),argb($endColor);
+}
+
+@mixin gradient-radial($innerColor: #555, $outerColor: #333) {
+	background-color: $outerColor;
+	background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+	background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+	background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+	background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
+	background-repeat: no-repeat;
+}
+
+@mixin gradient-striped($color: #555, $angle: 45deg) {
+	background-color: $color;
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+	background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+	background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+}
+
+// //清除IE渐变色
+@mixin gradient-iereset() {
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+
+
+
+// 滤镜 mixin -------------------------------------------------------------------------------------------------
+
+// 去色
+@mixin filter-grayscale($value : 100%){
+	filter: grayscale($value);
+	-webkit-filter: grayscale($value);
+	-moz-filter: grayscale($value);
+	-ms-filter: grayscale($value);
+	-o-filter: grayscale($value);
+}
+
+// 模糊
+@mixin filter-blur($value : 10px){
+	-webkit-filter: blur($value);
+	-moz-filter: blur($value);
+	-ms-filter: blur($value);
+	filter: blur($value);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+}
+
+
+
+
+// 3D mixin -------------------------------------------------------------------------------------------------
+
+@mixin rate3D($perspective:400px,$x:0deg,$y:0deg){
+	-webkit-transform:  perspective($perspective) rotateX($x) rotateY($y);
+	transform:  perspective($perspective) rotateX($x) rotateY($y);
+}
+
+//开启3D GPU加速
+@mixin open3D() {
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+//3D坐标
+@mixin translate3d($x, $y, $z) {
+	-webkit-transform: translate3d($x, $y, $z);
+	-moz-transform: translate3d($x, $y, $z);
+	-o-transform: translate3d($x, $y, $z);
+	transform: translate3d($x, $y, $z);
+}
+
+//摄影机视距
+@mixin perspective($value : 0){
+	-webkit-perspective: $value;
+	perspective: $value;
+}
+
+//3D模式
+@mixin preserve-3d(){
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+//3d中心点
+@mixin transform-origin($x,$y){
+	-webkit-transform-origin: $x $y;
+	transform-origin: $x $y;
+}
+
+//3d旋转
+@mixin rotateXY($x,$y){
+	-webkit-transform: rotateX($x) rotateY($y);
+	transform: rotateX($x) rotateY($y);
+}
+
+// Backface visibility
+//
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+@mixin backface-visibility($visibility){
+	-webkit-backface-visibility: $visibility;
+	-moz-backface-visibility: $visibility;
+	backface-visibility: $visibility;
+}
+
+
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+	box-shadow: $shadow;
+}
+
+
+
+
+// 盒模型 mixin -------------------------------------------------------------------------------------------------
+
+@mixin box-sizing($boxmodel:border-box){
+	-webkit-box-sizing: $boxmodel;
+	-moz-box-sizing: $boxmodel;
+	-ms-box-sizing: $boxmodel;
+	box-sizing: $boxmodel;
+}
+
+@mixin box-flex($n:1){
+	-webkit-box-flex:$n;
+	-moz-box-flex:$n;
+	-ms-box-flex:$n;
+	box-flex:$n;
+}
+
+//$value = vertical | horizontal
+@mixin box-orient($value:vertical){
+	-webkit-box-orient:$value;
+	-moz-box-orient:$value;
+	-ms-box-orient:$value;
+	box-orient:$value;
+}
+
+@mixin display-box(){
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+}
+
+//$value = start | center | end
+@mixin box-pack($value : start) {
+	-webkit-box-pack: $value;
+	-moz-box-pack: $value;
+	box-pack: $value;
+}
+
+//$value = start | center | end
+@mixin box-align($value : end) {
+	-webkit-box-align: $value;
+	-moz-box-align: $value;
+	box-align: $value;
+}
+
+/*箭头向上*/
+@mixin arrow-up($value: 10px, $color: #fff) {
+    width:0;
+    height:0;
+    border-left:$value solid transparent;
+    border-right:$value solid transparent;
+    border-bottom:$value solid $color;
+}
+
+ /*箭头向下*/
+@mixin arrow-down($value: 10px, $color: #fff) {
+    width:0;
+    height:0;
+    border-left:$value solid transparent;
+    border-right:$value solid transparent;
+    border-top:$value solid $color;
+}
+
+ /*箭头向左*/
+@mixin arrow-left($value: 10px, $color: #fff) {
+    width:0;
+    height:0;
+    border-top:$value solid transparent;
+    border-bottom:$value solid transparent;
+    border-right:$value solid $color;
+}
+
+/*箭头向右*/
+@mixin arrow-right($value: 10px, $color: #fff) {
+    width:0;
+    height:0;
+    border-top:$value solid transparent;
+    border-bottom: $value solid transparent;
+    border-left: $value solid $color;
+}

@@ -1,0 +1,448 @@
+@charset "utf-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+/*
+	boostrap 样式复写
+ */
+
+//文本 //////////////////////////////////////////////////////////////////////
+.text-primary{ color:$color-primary;}
+.text-danger{ color:$color-danger;}
+.text-success{ color:$color-success;}
+.text-info{ color:$color-info;}
+
+
+//按钮 //////////////////////////////////////////////////////////////////////
+.btn{
+    border-radius:$radius;
+    border-color : #c5c5c5;
+    background-color: #fafafa;
+    vertical-align: middle;
+    color:$color-title;
+    &.btn-primary{
+        background:$color-primary; color:#fff !important; border-color: $color-primary;
+        &:focus{background:$color-primary; color:#fff !important;}
+        &:hover{background:darken($color-primary,10%);}
+        &:active,
+        &.active{ background:darken($color-primary,15%) !important;}
+    }
+
+    &.btn-warning{
+        background:$color-warning;color:#fff !important; border-color: darken($color-warning,1%) !important;
+        &:focus{ background:$color-warning;color:#fff !important;}
+        &:hover{background:darken($color-warning, 10%);}
+        &:active,
+        &.active{ background:darken($color-warning, 15%) !important;}
+    }
+
+    &.btn-danger{
+        background:$color-danger;color:#fff !important; border-color: darken($color-danger,1%) !important;
+        &:focus{ background:$color-danger;color:#fff !important;}
+        &:hover{background:darken($color-danger, 10%);}
+        &:active,
+        &.active{ background:darken($color-danger, 15%) !important;}
+    }
+
+    &.btn-success{
+        background:$color-success;color:#fff !important; border-color: darken($color-success,1%) !important;
+        &:focus{ background:$color-success;color:#fff !important;}
+        &:hover{background:darken($color-success, 10%);}
+        &:active,
+        &.active{ background:darken($color-success, 15%) !important;}
+    }
+    &.btn-large {
+        min-width: 150px;
+        padding-left:30px;
+        padding-right:30px;
+    }
+
+    &[disabled],
+    &[disabled]:active,
+    &[disabled]:focus{
+        color:$disabled-font-color !important;  border-color: darken($disabled-bg-color,10%) !important;
+        background:$disabled-bg-color !important;
+    }
+
+    &a{
+    	color: $color-title
+    }
+
+}
+
+
+//面板 //////////////////////////////////////////////////////////////////////
+.panel{
+    border-radius:$radius;
+    box-shadow:0 0 5px rgba(0,0,0,0.2);
+    margin-bottom:0;
+
+    .panel-heading{
+        font-size:$font-size-title-large;
+        color:$color-title;
+    }
+
+    &.panel-primary{
+        border-color:$color-primary;
+        .panel-heading{
+            border-radius : 0;
+            background:$color-primary;
+            color:$color-primary-invert;
+            font-size:$font-size-title;
+            border:none;
+            padding:8px 10px;
+        }
+        .panel-body{
+            color:$color-info;
+            font-size:$font-size-info;
+            padding:8px 10px;
+        }
+    }
+}
+
+
+//表单输入 //////////////////////////////////////////////////////////////////
+.form-control{
+    border-radius: $radius;
+    vertical-align: middle;
+    &[type="date"]{
+        background: #fff url(../../images/icon-calender.png) no-repeat right center;
+        padding-right: 30px;
+    }
+
+}
+
+//checkbox & radio
+$switch-height : 26px;
+$checkbox-radio-height : 24px;
+$checkbox-radio-icon-left : 6px;
+
+
+label.form-control{
+    border:none;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    height: $checkbox-radio-height;
+    line-height: $checkbox-radio-height;
+    padding:0;
+    background:none;
+
+    //checkbox
+    [type="checkbox"]{display: none;}
+
+    [type="checkbox"]+span{
+        @include noselect();
+        position: relative;
+        padding-left: $checkbox-radio-height + 4px;
+        height: $checkbox-radio-height;
+        display: inline-block;
+        &:before{
+            @include animate($input-animate-speed);
+            @include translate(0,-50%);
+            cursor: pointer;
+            box-sizing: border-box;
+            content: '';
+            position: absolute;
+            border-radius : $input-radius;
+            border:1px solid $input-border-color;
+            top:50%;
+            left:0;
+            width: $checkbox-radio-height;
+            height: $checkbox-radio-height;
+            background:#fff;
+
+        }
+        &:after{
+            @include animate($input-animate-speed);
+            cursor: pointer;
+            box-sizing: border-box;
+            content: '';
+            opacity:0;
+            position: absolute;
+            left: $checkbox-radio-icon-left;
+            top: 50%;
+            width: 12px;
+            height: 6px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: translate(0,-60%) rotate(-45deg);
+
+        }
+    }
+
+    [type="checkbox"]:checked+span{
+
+        &:before{
+            background:$input-checkbox-color;
+            border-color:$input-checkbox-color;
+        }
+
+        &:after{
+            opacity:1;
+            transform: translate(0,-60%) rotate(-45deg);
+        }
+    }
+
+    [type="checkbox"]:disabled+span{
+
+        &:before{
+            cursor: not-allowed;
+            background:$input-disabled-bg-color;
+            border-color:$input-border-color;
+        }
+        &:after{
+            cursor: not-allowed;
+            border-color:$input-border-color;
+        }
+    }
+
+    //switch
+    [type="checkbox"]{display: none;}
+
+    [type="checkbox"]+em{
+        @include noselect();
+        font-style: normal;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: $checkbox-radio-height + 4px;
+        height: $switch-height;
+
+        &:before{
+            @include animate($input-animate-speed);
+            @include translate(0,-50%);
+            cursor: pointer;
+            box-sizing: border-box;
+            content: '';
+            position: absolute;
+            border:1px solid $input-border-color;
+            top:50%;
+            left:0;
+            width: $switch-height * 2;
+            height: $switch-height;
+            border-radius: $switch-height / 2;
+            background: #fff;
+        }
+        &:after{
+            @include animate($input-animate-speed);
+            cursor: pointer;
+            box-sizing: border-box;
+            content: '';
+            position: absolute;
+            top:2px;
+            left:2px;
+            width: $switch-height - 4px;
+            height: $switch-height - 4px;
+            border-radius: 100%;
+            border:1px solid $input-border-color;
+            background: #fff;
+        }
+    }
+    [type="checkbox"]:checked+em{
+
+        &:before{
+            background:$input-checkbox-color;
+            border-color:$input-checkbox-color;
+        }
+
+        &:after{
+            left: $switch-height + 1px;
+            border-color: #fff;
+        }
+    }
+    [type="checkbox"]:disabled+em{
+
+        &:before{
+            cursor: not-allowed;
+            background:$input-disabled-bg-color;
+            border-color:$input-border-color;
+        }
+        &:after{
+            cursor: not-allowed;
+            border-color:$input-border-color;
+        }
+    }
+
+
+    //radio
+    [type="radio"]{display: none;}
+
+    [type="radio"]+span{
+        @include noselect();
+        position: relative;
+        padding-left: $checkbox-radio-height + 4px;
+        display: inline-block;
+        &:before{
+            @include animate($input-animate-speed);
+            @include translate(0,-50%);
+            cursor: pointer;
+            box-sizing: border-box;
+            content: '';
+            position: absolute;
+            border-radius : 50%;
+            border:1px solid $input-border-color;
+            top:50%;
+            left:0;
+            width: $checkbox-radio-height;
+            height: $checkbox-radio-height;
+
+        }
+        &:after{
+            @include animate($input-animate-speed);
+            @include translate(0,-50%);
+            cursor: pointer;
+            box-sizing: border-box;
+            content: '';
+            opacity:0;
+            position: absolute;
+            left: $checkbox-radio-icon-left;
+            top: 50%;
+            border-radius : 50%;
+            width: $checkbox-radio-height / 2;
+            height: $checkbox-radio-height / 2;
+            background: #fff;
+        }
+    }
+
+    [type="radio"]:checked+span{
+
+        &:before{
+            background:$input-radio-color;
+            border-color:$input-radio-color;
+        }
+
+        &:after{
+            opacity:1;
+        }
+    }
+
+    [type="radio"]:disabled+span{
+
+        &:before{
+            cursor: not-allowed;
+            background:$input-disabled-bg-color;
+            border-color:$input-border-color;
+        }
+        &:after{
+            cursor: not-allowed;
+            border-color:$input-border-color;
+        }
+    }
+
+    [type="radio"]:disabled:checked+span{
+         &:after{
+             background:$input-border-color;
+        }
+    }
+}
+
+label.form-control{
+    margin-right:20px;
+    &:last-child{
+        margin-right:0;
+    }
+}
+
+
+//警告框 /////////////////////////////////////////////////////////////////////
+.alert{
+
+    border-radius:$info-radius;
+    padding:$info-padding;
+    font-size:$info-font-size;
+
+    &.alert-info{ border-color:$info-border-color; background:$info-bg-color; color:$info-font-color;}
+    &.alert-danger{ border-color:$info-danger-border-color; background:$info-danger-bg-color; color:$info-danger-font-color;}
+    &.alert-warning{ border-color:$info-warning-border-color; background:$info-warning-bg-color; color:$info-warning-font-color;}
+    &.alert-success{ border-color:$info-success-border-color; background:$info-success-bg-color; color:$info-success-font-color;}
+}
+
+//导航  //////////////////////////////////////////////////////////////////////
+.nav{
+    >li.active>a{
+        background:$color-primary;
+        border-radius:$radius;
+    }
+}
+
+//面包屑导航  ////////////////////////////////////////////////////////////////
+.breadcrumb{
+    background:none;
+    padding:0;
+    li{ color:$color-info;}
+    a{ color:$color-primary;}
+}
+
+
+//标签页  ////////////////////////////////////////////////////////////////
+.nav-tabs {
+    border-bottom: 2px solid #d7dbe6;
+    background-color: #f8f8f8;
+    li {
+        margin-bottom: 0
+    }
+}
+.nav-tabs > li > a {
+    position: relative;
+    padding: 0 30px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    color: $color-title;
+    border: none;
+    border-radius: 0;
+    &:before {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        content: '';
+        margin-top: -6px;
+        width: 2px;
+        height: 12px;
+        background-color: #979797
+    }
+}
+.nav-tabs > li:last-child > a {
+    &:before {
+        display: none;
+    }
+}
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    border: none;
+    background: none;
+    color: $color-primary;
+    &:after {
+        position: absolute;
+        left: 50%;
+        bottom: -2px;
+        content: '';
+        margin-left: -40%;
+        width: 80%;
+        height: 2px;
+        background-color: $color-primary;
+    }
+}
+.tab-content {
+    padding: 20px 10px;
+    .tab-pane {
+        display: block
+    }
+}
+
+//表格  ////////////////////////////////////////////////////////////////
+.table{
+    thead tr{
+        background:#f5f5f5;
+    }
+
+    &.table-bordered > thead > tr > th,
+    &.table-bordered > thead > tr > td{
+        border-bottom-width:1px;
+    }
+}

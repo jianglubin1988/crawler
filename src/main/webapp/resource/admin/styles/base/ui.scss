@@ -1,0 +1,177 @@
+@charset "UTF-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+// 一般 //////////////////////////////////////////////////////////////////////
+.ui-noresize{ resize:none; }
+.ui-group{ margin-bottom: 20px;}
+.ui-no-padding{ padding:0;}
+.ui-no-margin{ margin:0;}
+.ui-radius{ border-radius:20px;}
+.ui-relative{ position: relative; }
+.ui-auto-width{ width:auto !important;}
+.ui-inline-block{ display:inline-block; vertical-align: middle;}
+.ui-middle{ vertical-align: middle !important; }
+.ui-top{vertical-align: top;}
+.ui-bottom{vertical-align: bottom;}
+.ui-box-shadow{ box-shadow:0 3px 5px rgba(0,0,0,0.15)}
+
+//内容 //////////////////////////////////////////////////////////////////////
+.ui-content-nodata{
+    text-align:center;
+    font-size: $font-size-title;
+    color : #7e7e7e;
+    padding: 30px 0;
+    i[class*="icon-"]{
+        font-size: 30px;
+        margin-bottom:10px;
+        display: block;
+    }
+}
+
+.ui-content-loading{
+   height : 100px;
+   background : url(../../images/loading.gif) no-repeat center center;
+   &.sm{
+        height:30px;
+   }
+
+}
+
+//容器 //////////////////////////////////////////////////////////////////////
+//分页容器
+.ui-container-page{
+    text-align : right;
+    padding: 20px 0;
+}
+
+//链接容器
+.ui-container-link{
+    font-size:0;
+    a{
+        font-size:$font-size-info;
+        &:after{
+            content : '/';
+            margin:0 5px 0 5px;
+            color:$color-info;
+        }
+        &:last-child:after{
+            display: none;
+        }
+    }
+}
+
+// 动画 //////////////////////////////////////////////////////////////////////
+.ui-animate{ @include animate();}
+.ui-aniamte-color{@include animate-color();}
+
+// 布局 //////////////////////////////////////////////////////////////////////
+.ui-row{ box-sizing:border-box; display: table; width: 100%; height: 100%; border-collapse: collapse;}
+.ui-row>[class*="ui-col"]{box-sizing:border-box; display: table-cell; vertical-align: top;}
+.ui-col-top{ vertical-align: top !important;}
+.ui-col-middle{ vertical-align: middle !important;}
+.ui-col-bottom{ vertical-align: bottom !important;}
+
+// 尺寸 //////////////////////////////////////////////////////////////////////
+.ui-w100{ width:100px !important;}
+.ui-w150{ width:150px !important;}
+.ui-w200{ width:200px !important;}
+.ui-w250{ width:250px !important;}
+.ui-w300{ width:300px !important;}
+.ui-w350{ width:350px !important;}
+.ui-w400{ width:400px !important;}
+.ui-w450{ width:450px !important;}
+.ui-w500{ width:500px !important;}
+
+.ui-h100{ height:100px !important;}
+.ui-h150{ height:150px !important;}
+.ui-h200{ height:200px !important;}
+.ui-h250{ height:250px !important;}
+.ui-h300{ height:300px !important;}
+.ui-h350{ height:350px !important;}
+.ui-h400{ height:400px !important;}
+.ui-h450{ height:450px !important;}
+.ui-h500{ height:500px !important;}
+
+// 表格 //////////////////////////////////////////////////////////////////////
+// ui-table-form 输入表单
+table.ui-table-form{
+
+    border-collapse: collapse;
+    caption{
+        font-size:$font-size-title;
+        color:$color-primary;
+        padding:5px;
+    }
+    th,td{ padding: 6px 20px; font-size:$font-size-info; line-height: $input-height; color:$color-title;}
+    th{ width: 120px; text-align: right; padding: 0; font-weight: normal; white-space: nowrap;}
+    input.form-control,
+    select.form-control{
+        display:inline-block;
+        width:auto;
+    }
+    .form-control-rem{
+        display:inline-block;
+        font-size:$font-size-info;
+        padding-left:5px;
+        padding-right:5px;
+        color:$color-info;
+    }
+
+}
+
+// ui-table-search 搜索条件
+table.ui-table-search{
+    width: 100%;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+    th,td{  padding: 5px 5px; font-size:$font-size-info; color:$color-title; }
+    input.form-control,
+    select.form-control{
+        display:inline-block;
+        width: auto;
+    }
+    .form-control+.form-control{ margin-left:5px;}
+}
+
+// ui-table-data 数据表格
+table.ui-table-data{
+    border-collapse: collapse;
+    width:100%;
+    caption{
+        font-size:$font-size-title;
+        color:$color-title;
+        padding:5px;
+    }
+    th,td{
+        padding: 15px 10px;
+        font-size: 14px;
+        color:$color-title;
+        vertical-align: middle;
+        background:#fff;
+        border-bottom: 1px solid #e9ecf1;
+         white-space:nowrap;
+
+    }
+    thead{
+        td,th{
+            background:#f8f8f8;
+            color: $color-title;
+        }
+        th{ width: 42px; }
+    }
+    tbody{
+         tr{
+            &.active{
+                background: #f8f8f8;
+            }
+            &:hover{
+                background: lighten($color-primary,60%);
+            }
+        }
+    }
+    label.form-control {
+        display: block;
+    }
+
+}

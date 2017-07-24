@@ -1,0 +1,36 @@
+@charset "utf-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+body{
+	background-color: $color-background;
+}
+
+.container{
+	width: 98%;
+	height: 80%;
+	min-height: 780px;
+	padding: 20px;
+	// display: table;
+	background-color: $color-background;
+	.table-blank{
+		width: 20px;
+		min-width: 20px;
+		display: table-cell;
+	}
+}
+
+.horizontal-line{
+	background-color: $color-horizontal;
+	width: 90%;
+	height: 2px;
+	display: block;
+	margin: 10px;
+}
+
+.nav{
+	width: 98%;
+	border-bottom: 2px solid $color-horizontal;
+	padding: 10px;
+	margin-left: 20px;
+}

@@ -1,0 +1,58 @@
+@charset "utf-8";
+@import "_mixin.scss";
+@import "_global.scss";
+
+/*
+	第三方插件样式复写
+ */
+
+//jquery-datepicker //////////////////////////////////////////////////////////////////////
+.ui-datepicker{
+
+    border-color:$color-primary;
+    border-radius :$radius;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+
+    .ui-datepicker-header{
+        border-radius:$radius;
+        border:none;
+        background:$color-primary;
+        color:$color-primary-invert;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+        select{
+            color:$color-title;
+            margin:0 5px !important;
+            width:auto;
+        }
+
+        .ui-datepicker-prev,
+        .ui-datepicker-next{
+            display:block;
+            border-radius:$radius;
+            border:none !important;
+            background:$color-primary;
+            width:30px;
+            height:30px;
+            cursor: pointer;
+        }
+
+    }
+
+    .ui-datepicker-calendar{
+        .ui-state-default{
+            background:none;
+            border:none;
+            color:$color-title;
+            text-align:center;
+            &:hover{
+                background:#eeeeee;
+
+            }
+        }
+
+        .ui-state-active{
+            background : $color-primary;
+            color : $color-primary-invert;
+        }
+    }
+}
