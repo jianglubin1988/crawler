@@ -259,24 +259,103 @@ var core = {
 	 * 		$showLoadingTarget : $('body')//在什么地方显示loading
 	 * });
 	 */
+//	post: function(url, params, options){
+//
+//		// //定义服务端的关键字段信息
+//		// var interface = {
+//		// 	code : 'code',	//状态码字段名称
+//		// 	msg : 'msg',		//返回消息字段名称
+//		// 	successVal : 0	//定义当code等于什么时是成功状态
+//		// };
+//
+//		var opt = $.extend(true, {
+//			onSuccess : function(result){},
+//			onError : function(result){},
+//			onAjaxError : function(XMLHttpRequest, textStatus, errorThrown){},
+//			showLoading : true,
+//			$showLoadingTarget : $('body'),
+//		}, options);
+//
+//		if(opt.showLoading) core.loading(true,{$target:opt.$showLoadingTarget});
+//
+//		return $.ajax({
+//			url:url,
+//			type:'post',
+//			data : params,
+//			dataType : 'json',
+//			cache:false,
+//			success:function(result, textStatus, jqXHR){
+//
+//				if(opt.showLoading)
+//				{
+//					core.loading(false,{
+//						$target:opt.$showLoadingTarget,
+//						onHide:function(){
+//							_success();
+//						}
+//					});
+//				}
+//				else
+//				{
+//					_success();
+//				}
+//
+//				function _success(){
+//					if(eval('result.'+core.interface.code) === core.interface.successVal)
+//					{
+//						// opt.onSuccess(result);
+//						if(opt.onSuccess(result) !== false) core.noticeSuccess(result.msg);
+//					}
+//					else if(eval('result.'+core.interface.code) === core.interface.timeout)
+//					{
+//						core.error('登录超时！', function(){
+//							window.location.href = core.baseUrl;
+//						});
+//					}
+//					else
+//					{
+//						if(opt.onError(result) !== false) core.noticeError(result.msg);//当回调返回false，不弹出错误框了
+//					}
+//				}
+//
+//			},
+//			error:function(XMLHttpRequest, textStatus, errorThrown){
+//
+//				var showNotice = true;
+//				if(opt.onAjaxError(XMLHttpRequest, textStatus, errorThrown)==false){
+//					showNotice = false;
+//				}
+//
+//				if(textStatus == "abort"){
+//					showNotice = false;
+//				}
+//
+//				if(opt.showLoading)
+//				{
+//					core.loading(false,{
+//						$target:opt.$showLoadingTarget,
+//						onHide : function(){
+//
+//							showNotice && core.error(textStatus);
+//						}
+//					});
+//				}
+//				else
+//				{
+//					showNotice && core.error(textStatus);
+//				}
+//
+//			}
+//		});
+//	},
+	
 	post: function(url, params, options){
-
-		// //定义服务端的关键字段信息
-		// var interface = {
-		// 	code : 'code',	//状态码字段名称
-		// 	msg : 'msg',		//返回消息字段名称
-		// 	successVal : 0	//定义当code等于什么时是成功状态
-		// };
 
 		var opt = $.extend(true, {
 			onSuccess : function(result){},
 			onError : function(result){},
 			onAjaxError : function(XMLHttpRequest, textStatus, errorThrown){},
-			showLoading : true,
-			$showLoadingTarget : $('body'),
 		}, options);
-
-		if(opt.showLoading) core.loading(true,{$target:opt.$showLoadingTarget});
 
 		return $.ajax({
 			url:url,
@@ -285,42 +364,13 @@ var core = {
 			dataType : 'json',
 			cache:false,
 			success:function(result, textStatus, jqXHR){
-
-				if(opt.showLoading)
-				{
-					core.loading(false,{
-						$target:opt.$showLoadingTarget,
-						onHide:function(){
-							_success();
-						}
-					});
+				if(eval('result.'+core.interface.code) === core.interface.successVal) {
+					opt.onSuccess(result);
+				} else {
+					opt.onError(result);
 				}
-				else
-				{
-					_success();
-				}
-
-				function _success(){
-					if(eval('result.'+core.interface.code) === core.interface.successVal)
-					{
-						// opt.onSuccess(result);
-						if(opt.onSuccess(result) !== false) core.noticeSuccess(result.msg);
-					}
-					else if(eval('result.'+core.interface.code) === core.interface.timeout)
-					{
-						core.error('登录超时！', function(){
-							window.location.href = core.baseUrl;
-						});
-					}
-					else
-					{
-						if(opt.onError(result) !== false) core.noticeError(result.msg);//当回调返回false，不弹出错误框了
-					}
-				}
-
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
-
 				var showNotice = true;
 				if(opt.onAjaxError(XMLHttpRequest, textStatus, errorThrown)==false){
 					showNotice = false;
@@ -330,20 +380,7 @@ var core = {
 					showNotice = false;
 				}
 
-				if(opt.showLoading)
-				{
-					core.loading(false,{
-						$target:opt.$showLoadingTarget,
-						onHide : function(){
-
-							showNotice && core.error(textStatus);
-						}
-					});
-				}
-				else
-				{
-					showNotice && core.error(textStatus);
-				}
+				showNotice && alert(textStatus);
 
 			}
 		});
@@ -361,4 +398,3 @@ var core = {
 };
 
 //支持构建接口
-if(module) module.exports = core;

@@ -3,6 +3,8 @@
  * @namespace
  */
 var utils = {
+		
+	baseUrl: '/crawler',
 
 	/**
 	 * 获取URL参数值
@@ -279,4 +281,3 @@ var utils = {
 
 };
 
-if(module) module.exports = utils;

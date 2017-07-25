@@ -9,6 +9,9 @@
 <meta name="renderer" content="webkit"/>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resource/admin/scripts/lib/jquery/3.0.0/jquery.min.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/admin/scripts/utils/utils.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/admin/scripts/utils/core.js"></script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath }/resource/admin/scripts/lib/bootstrap/3.3.5-noicon/js/bootstrap.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resource/admin/scripts/lib/layui/layui.js"></script>
 
