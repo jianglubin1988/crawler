@@ -35,7 +35,7 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping("/signIn")
 	public ModelAndView login(HttpServletRequest req, Model model){
 		ModelAndView mv = new ModelAndView();
 		try {

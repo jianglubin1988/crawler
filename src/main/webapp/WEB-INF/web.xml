@@ -49,11 +49,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>*.css</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.js</url-pattern>
+        <url-pattern>/resource/admin/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>  
         <welcome-file>/index.jsp</welcome-file>  

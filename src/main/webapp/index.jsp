@@ -3,14 +3,6 @@
 <script type="text/javascript">
 	window.location.href = "/crawler/login/index.do";
 </script>
-
-<style type="text/css">
-	input.fc{
-		background-color: yellow;
-	}
-</style>
 <body>
-
-<input type="text" class="form-control fc"/>
 </body>
 </html>
