@@ -14,3 +14,4 @@ log.txt
 /target/ssm.war
 /node_modules/
 /target/
+.DS_Store
