@@ -90,35 +90,4 @@ public class LoginController {
 		return mv;
 	}
 	
-//	@RequestMapping("/signIn")
-//	public ModelAndView login(HttpServletRequest req, Model model){
-//		ModelAndView mv = new ModelAndView();
-//		try {
-//			HttpSession session = req.getSession(true);
-//			String username = req.getParameter("username");
-//			String password = req.getParameter("password");
-//			
-//			UserCrawler uc = service.selectByUsername(username);
-//			if(uc != null) {
-//				boolean isLogin = EncoderUtils.checkPassword(password, uc.getPassword());
-//				if(isLogin) {
-//					session.setAttribute("username", username);
-//					session.setAttribute("userId", uc.getId());
-//					mv.addObject("result", DataUtils.successData(uc));
-//					mv.setViewName("/index");
-//				}else {
-//					mv.addObject("result", DataUtils.errorData("用户名或密码错误"));
-//					mv.setViewName("/login");
-//				}
-//			}else {
-//				mv.addObject("result", DataUtils.errorData("用户名或密码错误"));
-//				mv.setViewName("/login");
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			log.error(e.getMessage());
-//		}
-//		return mv;
-//	}
 }

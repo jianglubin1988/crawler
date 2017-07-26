@@ -1,0 +1,104 @@
+.ui-calendar {
+  border-top: 2px solid #ced4e0;
+  background: #fff;
+  width: 480px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px #c8c4c4;
+}
+.ui-calendar .calendar-hd {
+  background: #f8f8f8;
+}
+.ui-calendar .calendar-hd .calendar-time {
+  font-size: 22px;
+  color: #4a4a4a;
+}
+.ui-calendar .calendar-hd .calendar-time i {
+  font-size: 26px;
+  font-style: normal;
+}
+.ui-calendar .calendar-hd .calendar-arrow {
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  border: 1px solid #c5c5c5;
+  background: #fff;
+  position: relative;
+  margin-top: 18px;
+  border-radius: 2px;
+}
+.ui-calendar .calendar-hd .calendar-arrow span {
+  display: inline-block;
+  border: 5px solid transparent;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 9px;
+}
+.ui-calendar .calendar-hd .calendar-arrow .arrow-prev {
+  border-right-color: #4b4b4b;
+  left: 17px;
+}
+.ui-calendar .calendar-hd .calendar-arrow .arrow-next {
+  border-left-color: #4b4b4b;
+}
+.ui-calendar .calendar-hd .arrowoff {
+  cursor: not-allowed;
+}
+.ui-calendar .calendar-hd .arrowoff .arrow-prev {
+  border-right-color: #b7aeae;
+}
+.ui-calendar .calendar-hd .arrowoff .arrow-next {
+  border-left-color: #b7aeae;
+}
+.ui-calendar .calendar-hd .calendar-arrow-prev {
+  float: left;
+  margin-left: 18px;
+}
+.ui-calendar .calendar-hd .calendar-arrow-next {
+  float: right;
+  margin-right: 18px;
+}
+.ui-calendar .calendar-hd .calendar-hd-title {
+  height: 58px;
+  line-height: 58px;
+  text-align: center;
+}
+.ui-calendar .calendar-hd .calendar-hd-week {
+  font-size: 14px;
+  color: #a9a9a9;
+  width: 100%;
+  padding-left: 10px;
+}
+.ui-calendar .calendar-hd .calendar-hd-week span {
+  padding: 14px 0;
+  width: 33px;
+  display: inline-block;
+  text-align: center;
+  margin: 0 14px;
+}
+.ui-calendar .calendar-bd .calendar-bd-days {
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+.ui-calendar .calendar-bd .calendar-bd-days a {
+  display: inline-block;
+  width: 33px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  color: #4a4a4a;
+  text-decoration: none;
+  border-radius: 50%;
+  margin: 20px 17px 0;
+  border: 1px solid transparent;
+}
+.ui-calendar .calendar-bd .calendar-bd-days .cur {
+  background: #ff5253;
+  color: #fff;
+}
+.ui-calendar .calendar-bd .calendar-bd-days .off {
+  color: #9b9b9b;
+}
+.ui-calendar .calendar-bd .calendar-bd-days .choose {
+  border: 1px solid #ff5253;
+}

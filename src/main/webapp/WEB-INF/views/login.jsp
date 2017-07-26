@@ -117,9 +117,9 @@
 		
 	</div>
 
-<div id="dialog" title="提示">
-	<p>哈哈哈哈哈</p>
-</div>
+	<!-- <div id="dialog" class="hide" title="提示">
+		<p>哈哈哈哈哈</p>
+	</div> -->
 
 	
 </div>

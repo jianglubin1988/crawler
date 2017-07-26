@@ -1,0 +1,111 @@
+
+
+// .cl:after{visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+// .cl{*zoom: 1;}
+
+.ui-calendar{
+	border-top: 2px solid #ced4e0;
+	background: #fff;
+	width: 480px;
+	box-sizing: border-box;
+	box-shadow: 0 4px 12px #c8c4c4;
+	.calendar-hd{
+		background: #f8f8f8;
+		.calendar-time{
+			font-size: 22px;
+			color: #4a4a4a;
+			i{
+				font-size: 26px;
+				font-style: normal;
+			}
+		}
+		.calendar-arrow{
+			display: inline-block;
+			width: 50px;
+			height: 28px;
+			border: 1px solid #c5c5c5;
+			background: #fff;
+			position: relative;
+			margin-top: 18px;
+			border-radius: 2px;
+			span{
+				display: inline-block;
+				border: 5px solid transparent;
+				width: 0;
+				height: 0;
+				position: absolute;
+				top: 9px;
+			}
+			.arrow-prev{
+				border-right-color: #4b4b4b;
+				left: 17px;
+			}
+			.arrow-next{
+				border-left-color: #4b4b4b;
+			}
+		}
+		.arrowoff{
+			cursor: not-allowed;
+			.arrow-prev{
+				border-right-color: #b7aeae;
+			}
+			.arrow-next{
+				border-left-color: #b7aeae;
+			}
+		}
+		.calendar-arrow-prev{
+			float: left;
+			margin-left: 18px;
+		}
+		.calendar-arrow-next{
+			float: right;
+			margin-right: 18px;
+		}
+		.calendar-hd-title{
+			height: 58px;
+			line-height: 58px;
+			text-align: center;
+		}
+		.calendar-hd-week{
+			font-size: 14px;
+			color: #a9a9a9;
+			width: 100%;
+			padding-left: 10px;
+			span{
+				padding: 14px 0;
+				width: 33px;
+				display: inline-block;
+				text-align: center;
+				margin: 0 14px;
+			}
+		}
+	}
+	.calendar-bd{
+		.calendar-bd-days{
+			padding-left: 10px;
+			padding-bottom: 20px;
+			a{
+				display: inline-block;
+				width: 33px;
+				height: 32px;
+				line-height: 32px;
+				text-align: center;
+				color: #4a4a4a;
+				text-decoration: none;
+				border-radius: 50%;
+				margin: 20px 17px 0;
+				border: 1px solid transparent;
+			}
+			.cur{
+				background: #ff5253;
+				color: #fff;
+			}
+			.off{
+				color: #9b9b9b;
+			}
+			.choose{
+				border: 1px solid #ff5253;
+			}
+		}
+	}
+}
