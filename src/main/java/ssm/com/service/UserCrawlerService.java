@@ -5,4 +5,6 @@ import ssm.com.domain.UserCrawler;
 public interface UserCrawlerService extends CommonService<UserCrawler> {
 
 	public UserCrawler selectByUsername(String username);
+	
+	public UserCrawler selectByMobile(String mobile);
 }

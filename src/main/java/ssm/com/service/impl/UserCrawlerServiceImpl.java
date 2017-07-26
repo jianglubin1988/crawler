@@ -106,4 +106,16 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 		return result;
 	}
 
+	@Override
+	public UserCrawler selectByMobile(String mobile) {
+		UserCrawler result = null;
+		try {
+			result = mapper.selectByMobile(mobile);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+		}
+		return result;
+	}
+
 }

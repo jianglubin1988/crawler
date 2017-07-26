@@ -18,13 +18,13 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-block">
-							<input type="text" name="username" ng-model="data.user.username" lay-verify="required" placeholder="请输入您的用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="username" ng-model="data.user.username" lay-verify="required" placeholder="请输入您的用户名" autocomplete="off" class="layui-input" maxlength="20">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="password" ng-model="data.user.password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input">
+							<input type="password" name="password" ng-model="data.user.password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input" maxlength="16">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -42,25 +42,25 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-block">
-							<input type="text" name="username" ng-model="data.user.username" placeholder="请输入您的用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="username" ng-model="data.user.username" placeholder="请输入您的用户名" autocomplete="off" class="layui-input" maxlength="20">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号</label>
 						<div class="layui-input-block">
-							<input type="text" name="mobile" ng-model="data.user.mobile" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input">
+							<input type="text" name="mobile" ng-model="data.user.mobile" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input" maxlength="11">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">新密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="password" ng-model="data.user.password" autocomplete="off" placeholder="请输入密码" class="layui-input">
+							<input type="password" name="password" ng-model="data.user.password" autocomplete="off" placeholder="请输入密码" class="layui-input" maxlength="16">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">确认密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="repassword" ng-model="data.user.repassword" autocomplete="off" placeholder="请再次输入密码" class="layui-input">
+							<input type="password" name="repassword" ng-model="data.user.repassword" autocomplete="off" placeholder="请再次输入密码" class="layui-input" maxlength="16">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -76,26 +76,26 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号</label>
 						<div class="layui-input-block">
-							<input type="text" name="mobile" ng-model="data.user.mobile" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input">
+							<input type="text" name="mobile" ng-model="data.user.mobile" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input" maxlength="11">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">验证码</label>
 						<div class="layui-input-block">
-							<input type="text" name="code" ng-model="data.user.code" placeholder="请输入验证码" autocomplete="off" class="layui-input input-code">
-							<button class="layui-btn btn-code" ng-click="sendMsg()">发送验证码</button>
+							<input type="text" name="code" ng-model="data.user.code" placeholder="请输入验证码" autocomplete="off" class="layui-input input-code" maxlength="6">
+							<button class="layui-btn btn-code" type="button" ng-click="sendMsg()">发送验证码</button>
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">新密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="password" ng-model="data.user.password" autocomplete="off" placeholder="请输入密码" class="layui-input">
+							<input type="password" name="password" ng-model="data.user.password" autocomplete="off" placeholder="请输入密码" class="layui-input" maxlength="16">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">确认密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="repassword" ng-model="data.user.repassword" autocomplete="off" placeholder="请再次输入密码" class="layui-input">
+							<input type="password" name="repassword" ng-model="data.user.repassword" autocomplete="off" placeholder="请再次输入密码" class="layui-input" maxlength="16">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -106,21 +106,11 @@
 				</form>
 			</div>
 
-			<div class="form-tips hide" ng-show="data.msgStatus">
-				{{data.errMsg}}
-				<!-- <span>
-					x
-				</span> -->
-			</div>
+			<div class="form-tips"></div>
 			
 		</div>
 		
 	</div>
-
-	<!-- <div id="dialog" class="hide" title="提示">
-		<p>哈哈哈哈哈</p>
-	</div> -->
-
 	
 </div>
 

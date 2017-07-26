@@ -301,7 +301,8 @@ var core = {
 						 opt.onSuccess(result);
 //						if(opt.onSuccess(result) !== false) core.noticeSuccess(result.msg);
 					} else {
-						if(opt.onError(result) !== false) core.noticeError(result.msg);//当回调返回false，不弹出错误框了
+						opt.onError(result);
+//						if(opt.onError(result) !== false) core.noticeError(result.msg);//当回调返回false，不弹出错误框了
 					}
 				}
 

@@ -19,13 +19,6 @@ app.controller('formCtrl', function($scope) {
 	_this.init = function(){
 		console.log('init');
 		$('.hide').removeClass('hide');
-//		core.confirm('aaa', function(status){
-//			if(status){
-//				console.log("true");
-//			}else{
-//				console.log("false");
-//			}
-//		})
 	}
 
 	
@@ -34,6 +27,16 @@ app.controller('formCtrl', function($scope) {
 	 */
     _this.tab = function(index){
     	data.tabIndex = index;
+    }
+    
+    _this.showTips = function(msg){
+    	$('.form-tips').fadeIn(500);
+    	$('.form-tips').text(msg);
+		setTimeout(function(){
+			$('.form-tips').fadeOut(500, function(){
+				$('.form-tips').text('');
+			});
+		},1000);
     }
     
     /**
@@ -49,11 +52,7 @@ app.controller('formCtrl', function($scope) {
 				window.location.href = utils.baseUrl + '/login/redirect.do';
 			},
 			onError: function(result){
-				console.log('login faile');
-				data.errMsg = result.data;
-				data.msgStatus = true;
-				console.log(result.data);
-				return false;
+				_this.showTips(result.data);
 			}
 		})
     }
@@ -67,14 +66,13 @@ app.controller('formCtrl', function($scope) {
 		var url = utils.baseUrl + '/register/signUp.do';
 		core.post(url, data.user, {
 			onSuccess: function(result){
-//				console.log(result.msg);
-				window.location.href = utils.baseUrl + '/login/index.do';
+				data.user = {};
+				core.success(result.data, function(){
+					window.location.href = utils.baseUrl + '/login/index.do';
+				})
 			},
 			onError: function(result){
-//				core.error(result.data);
-				data.errMsg = result.data;
-				data.msgStatus = true;
-				console.log(result.data);
+				_this.showTips(result.data);
 			}
 		})
     }
@@ -88,12 +86,13 @@ app.controller('formCtrl', function($scope) {
 		var url = utils.baseUrl + '/register/resetPassword.do';
 		core.post(url, data.user, {
 			onSuccess: function(result){
-				window.location.href = utils.baseUrl + '/login/index.do';
+				data.user = {};
+				core.success(result.data, function(){
+					window.location.href = utils.baseUrl + '/login/index.do';
+				})
 			},
 			onError: function(result){
-				data.errMsg = result.data;
-				data.msgStatus = true;
-				console.log(result.data);
+				_this.showTips(result.data);
 			}
 		})
     }
@@ -107,12 +106,10 @@ app.controller('formCtrl', function($scope) {
 		var url = utils.baseUrl + '/register/sendMsg.do';
 		core.post(url, data.user, {
 			onSuccess: function(result){
-				console.log(result.msg);
+				core.success(result.data);
 			},
 			onError: function(result){
-				data.errMsg = result.data;
-				data.msgStatus = true;
-				console.log(result.data);
+				_this.showTips(result.data);
 			}
 		})
     }

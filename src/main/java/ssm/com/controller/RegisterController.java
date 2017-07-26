@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,18 +41,31 @@ public class RegisterController {
 		try {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
+			String repassword = request.getParameter("repassword");
 			String mobile = request.getParameter("mobile");
-			UserCrawler uc = service.selectByUsername(username);
-			if(uc == null) {
-				uc = new UserCrawler();
-				String enPwd = EncoderUtils.encodeByMd5(password);
-				uc.setUsername(username);
-				uc.setPassword(enPwd);
-				uc.setMobile(mobile);
-				service.insertSelective(uc);
-				map = DataUtils.successData("注册成功");
+			if(StringUtils.isEmpty(username)) {
+				map = DataUtils.errorData("请输入用户名");
+			}else if(StringUtils.isEmpty(mobile)) {
+				map = DataUtils.errorData("请输入手机号");
+			}else if(StringUtils.isEmpty(password)) {
+				map = DataUtils.errorData("请输入密码");
+			}else if(StringUtils.isEmpty(repassword)) {
+				map = DataUtils.errorData("请输入确认密码");
+			}else if(!password.equals(repassword)){
+				map = DataUtils.errorData("两次密码输入不一致");
 			}else {
-				map = DataUtils.errorData("用户已存在");
+				UserCrawler uc = service.selectByUsername(username);
+				if(uc == null) {
+					uc = new UserCrawler();
+					String enPwd = EncoderUtils.encodeByMd5(password);
+					uc.setUsername(username);
+					uc.setPassword(enPwd);
+					uc.setMobile(mobile);
+					service.insertSelective(uc);
+					map = DataUtils.successData("注册成功");
+				}else {
+					map = DataUtils.errorData("用户已存在");
+				}
 			}
 			
 		} catch (Exception e) {
@@ -72,15 +86,30 @@ public class RegisterController {
     public @ResponseBody Map<String,Object> resetPwd(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			String username = request.getParameter("username");
+			String mobile = request.getParameter("mobile");
 			String password = request.getParameter("password");
-			
-			UserCrawler uc = service.selectByUsername(username);
-			if(uc != null) {
-				String enPwd = EncoderUtils.encodeByMd5(password);
-				map = DataUtils.successData("密码重置成功");
+			String repassword = request.getParameter("repassword");
+			String code = request.getParameter("code");
+			if(StringUtils.isEmpty(mobile)) {
+				map = DataUtils.errorData("请输入手机号");
+			}else if(StringUtils.isEmpty(code) || code.length() < 6){
+				map = DataUtils.errorData("验证码错误");
+			}else if(StringUtils.isEmpty(password)) {
+				map = DataUtils.errorData("请输入密码");
+			}else if(StringUtils.isEmpty(repassword)) {
+				map = DataUtils.errorData("请输入确认密码");
+			}else if(!password.equals(repassword)){
+				map = DataUtils.errorData("两次密码输入不一致");
 			}else {
-				map = DataUtils.errorData("用户不存在");
+				UserCrawler uc = service.selectByMobile(mobile);
+				if(uc != null) {
+					String enPwd = EncoderUtils.encodeByMd5(password);
+					uc.setPassword(enPwd);
+					service.updateByPrimaryKey(uc);
+					map = DataUtils.successData("密码重置成功");
+				}else {
+					map = DataUtils.errorData("该手机用户不存在");
+				}
 			}
 			
 		} catch (Exception e) {
@@ -101,15 +130,13 @@ public class RegisterController {
     public @ResponseBody Map<String,Object> sendMsg(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			
-			UserCrawler uc = service.selectByUsername(username);
-			if(uc == null) {
-				String enPwd = EncoderUtils.encodeByMd5(password);
-				map = DataUtils.successData("验证码");
+			String mobile = request.getParameter("mobile");
+			UserCrawler uc = service.selectByMobile(mobile);
+			if(uc != null) {
+				Double ran = Math.random() * 1000000;
+				map = DataUtils.successData(ran.intValue());
 			}else {
-				map = DataUtils.errorData("用户已存在");
+				map = DataUtils.errorData("用户不存在");
 			}
 			
 		} catch (Exception e) {
