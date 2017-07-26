@@ -6,57 +6,46 @@
 
 <div class="main" ng-app="myApp" ng-controller="formCtrl">
 
-  <form>
-    First Name:<br>
-    <input type="text" ng-model="user.firstName"><br>
-    Last Name:<br>
-    <input type="text" ng-model="user.lastName">
-    <br><br>
-    <button ng-click="reset()">RESET</button>
-  </form>
-  <p>form = {{user}}</p>
-  <p>master = {{master}}</p>
-
 	<div class="block">
 		<div class="tabs">
-			<p class="layui-this"><i class="layui-icon">&#xe602;</i>用户登录</p>
-			<p><i class="layui-icon">&#xe602;</i>快速注册</p>
-			<p><i class="layui-icon">&#xe602;</i>忘记密码</p>
+			<p class="layui-this" ng-click="tab(1)"><i ng-show="data.tabIndex == 1" class="layui-icon">&#xe602;</i>用户登录</p>
+			<p ng-click="tab(2)"><i ng-show="data.tabIndex == 2" class="layui-icon hide">&#xe602;</i>快速注册</p>
+			<p ng-click="tab(3)"><i ng-show="data.tabIndex == 3" class="layui-icon hide">&#xe602;</i>忘记密码</p>
 		</div>
 		<div class="forms">
-			<div class="login-form">
+			<div class="login-form" ng-show="data.tabIndex == 1">
 				<form class="layui-form form-content" action="${pageContext.request.contextPath }/login/signIn.do" method="post">
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-block">
-							<input type="text" name="username" lay-verify="required" placeholder="请输入您的用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="username" ng-model="data.user.username" lay-verify="required" placeholder="请输入您的用户名" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input">
+							<input type="password" name="password" ng-model="data.user.password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-block">
 							<!-- <button class="layui-btn" type="submit">立即提交</button> -->
-							<button class="layui-btn form-submit" type="button">立即提交</button>
+							<button class="layui-btn form-submit" type="button" ng-click="formSubmit()">立即提交</button>
 						</div>
 					</div>
 				</form>
 				
 			</div>
 
-			<div class="register-form hide">
+			<div class="register-form hide"  ng-show="data.tabIndex == 2">
 				注册
 			</div>
 
-			<div class="password-form hide">
+			<div class="password-form hide" ng-show="data.tabIndex == 3">
 				忘记密码
 			</div>
 
-			<div class="form-tips hide">
+			<div class="form-tips hide" ng-show="data.loginFail">
 				${result.data }
 				<span>
 					x
