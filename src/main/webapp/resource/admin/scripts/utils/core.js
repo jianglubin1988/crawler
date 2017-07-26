@@ -393,6 +393,10 @@ var core = {
 	 */
 	url : function(url){
 		return this.baseUrl + url;
+	},
+	
+	jDialog: function(target){
+		return target.dialog();
 	}
 
 };

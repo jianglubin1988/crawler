@@ -1,7 +1,3 @@
-$(function(){
-	console.log('jquery init');
-})
-
 var app = angular.module('myApp', []);
 app.controller('formCtrl', function($scope) {
 	var _this = $scope;
@@ -23,6 +19,7 @@ app.controller('formCtrl', function($scope) {
 	_this.init = function(){
 		console.log('init');
 		$('.hide').removeClass('hide');
+		core.jDialog($('#dialog'));
 	}
 	_this.init();
 	
