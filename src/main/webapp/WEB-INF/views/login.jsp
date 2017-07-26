@@ -38,18 +38,79 @@
 			</div>
 
 			<div class="register-form hide"  ng-show="data.tabIndex == 2">
-				注册
+				<form class="layui-form form-register" action="${pageContext.request.contextPath }/register/signUp.do" method="post">
+					<div class="layui-form-item">
+						<label class="layui-form-label">用户名</label>
+						<div class="layui-input-block">
+							<input type="text" name="username" ng-model="data.user.username" placeholder="请输入您的用户名" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">手机号</label>
+						<div class="layui-input-block">
+							<input type="text" name="mobile" ng-model="data.user.mobile" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">新密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="password" ng-model="data.user.password" autocomplete="off" placeholder="请输入密码" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">确认密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="repassword" ng-model="data.user.repassword" autocomplete="off" placeholder="请再次输入密码" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn form-submit" type="button" ng-click="formRegister()">立即提交</button>
+						</div>
+					</div>
+				</form>
 			</div>
 
 			<div class="password-form hide" ng-show="data.tabIndex == 3">
-				忘记密码
+				<form class="layui-form form-password" action="${pageContext.request.contextPath }/register/resetPassword.do" method="post">
+					<div class="layui-form-item">
+						<label class="layui-form-label">手机号</label>
+						<div class="layui-input-block">
+							<input type="text" name="mobile" ng-model="data.user.mobile" placeholder="请输入您的手机号码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">验证码</label>
+						<div class="layui-input-block">
+							<input type="text" name="code" ng-model="data.user.code" placeholder="请输入验证码" autocomplete="off" class="layui-input input-code">
+							<button class="layui-btn btn-code" ng-click="sendMsg()">发送验证码</button>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">新密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="password" ng-model="data.user.password" autocomplete="off" placeholder="请输入密码" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">确认密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="repassword" ng-model="data.user.repassword" autocomplete="off" placeholder="请再次输入密码" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn form-submit" type="button" ng-click="formPassword()">立即提交</button>
+						</div>
+					</div>
+				</form>
 			</div>
 
-			<div class="form-tips hide" ng-show="data.loginFail">
-				${result.data }
-				<span>
+			<div class="form-tips hide" ng-show="data.msgStatus">
+				{{data.errMsg}}
+				<!-- <span>
 					x
-				</span>
+				</span> -->
 			</div>
 			
 		</div>

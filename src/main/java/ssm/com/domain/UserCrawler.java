@@ -6,6 +6,8 @@ public class UserCrawler {
     private String username;
 
     private String password;
+    
+    private String mobile;
 
     public Integer getId() {
         return id;
@@ -30,4 +32,12 @@ public class UserCrawler {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 }

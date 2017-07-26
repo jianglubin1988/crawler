@@ -68,14 +68,27 @@ html,body{
     position: relative;
 }
 
-.form-content{
+.form-content, .form-register, .form-password{
 	padding: 10px;
 	position: absolute;
 	top: 20%;
 }
 
-.form-content input{
+.form-register, .form-password{
+	top: 8%
+}
+
+.form-content input, .form-register input, .form-password input{
 	width: 200px;
+}
+
+.form-password .input-code{
+	width: 98px;
+	display: inline-block;
+}
+
+.form-password .btn-code{
+	width: 100px;
 }
 
 .layui-btn{

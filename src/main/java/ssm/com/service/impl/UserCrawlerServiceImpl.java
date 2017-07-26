@@ -48,8 +48,14 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 
 	@Override
 	public int insertSelective(UserCrawler record) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try {
+			result = mapper.insertSelective(record);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+		}
+		return result;
 	}
 
 	@Override

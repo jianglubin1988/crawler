@@ -42,6 +42,13 @@ public class LoginController {
 		return mv;
 	}
 	
+	/**
+	 * 登录
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value="/signIn")  
     public @ResponseBody Map<String,Object> login(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		Map<String, Object> map = new HashMap<String, Object>();
