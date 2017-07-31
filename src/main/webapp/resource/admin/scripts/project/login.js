@@ -1,5 +1,5 @@
-var app = angular.module('myApp', []);
-app.controller('formCtrl', function($scope) {
+var app = angular.module('loginApp', []);
+app.controller('loginCtrl', function($scope) {
 	var _this = $scope;
 	_this.data = {
 		user: {

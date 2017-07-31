@@ -2,9 +2,9 @@
 <%@include file="_header.jsp"%>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resource/admin/scripts/project/login.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resource/admin/styles/project/login.css"></link>
-<body>
+<body ng-app="loginApp" ng-controller="loginCtrl">
 
-<div class="main" ng-app="myApp" ng-controller="formCtrl">
+<div class="main">
 
 	<div class="block">
 		<div class="tabs">

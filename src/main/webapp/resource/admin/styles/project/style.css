@@ -1,0 +1,31 @@
+html,body{
+	background: rgb(51, 51, 51);
+	width: 100%;
+	height: 100%;
+}
+
+.container{
+	max-width: 960px;
+	height: 100%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.bg-olive{
+	background: rgb(149, 158, 43);
+}
+.bg-red{
+	background: rgb(167, 32, 40);
+}
+.bg-green{
+	background: rgb(0, 160, 104);
+}
+.bg-yellow{
+	background: rgb(211, 154, 28);
+}
+.bg-blue{
+	background: rgb(0, 98, 154);
+}
+.bg-purper{
+	background: rgb(149, 84, 125);
+}
