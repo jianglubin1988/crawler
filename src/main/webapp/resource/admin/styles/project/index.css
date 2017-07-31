@@ -14,7 +14,7 @@ html,body{
 }
 
 .block{
-	width: 43%;;
+	width: 43%;
 	height: 200px;
 	line-height: 200px;
 	text-align: center;
@@ -22,12 +22,13 @@ html,body{
 	margin: 10px;
 	cursor: pointer;
 	font-size: 18px;
-	transition:background 0.5s;
-	-moz-transition:background 0.5s; /* Firefox 4 */
-	-webkit-transition:background 0.5s; /* Safari and Chrome */
-	-o-transition:background 0.5s; /* Opera */
+	transition:all 0.5s;
+	-moz-transition:all 0.5s; /* Firefox 4 */
+	-webkit-transition:all 0.5s; /* Safari and Chrome */
+	-o-transition:all 0.5s; /* Opera */
 }
 
 .block:hover{
 	background: rgb(149, 84, 125);
+	font-size: 20px;
 }
