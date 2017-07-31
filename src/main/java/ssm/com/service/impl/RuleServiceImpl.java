@@ -1,8 +1,5 @@
 package ssm.com.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -62,8 +59,8 @@ public class RuleServiceImpl implements RuleService {
 	}
 
 	@Override
-	public List<Rule> selectByWebsiteKey(Integer webId) {
-		List<Rule> result = new ArrayList<Rule>();
+	public Rule selectByWebsiteKey(Integer webId) {
+		Rule result = new Rule();
 		try {
 			result = mapper.selectByWebsiteKey(webId);
 		} catch (Exception e) {
