@@ -1,6 +1,7 @@
 package ssm.com.domain;
 
 public class UserCrawler {
+	
     private Integer id;
 
     private String username;

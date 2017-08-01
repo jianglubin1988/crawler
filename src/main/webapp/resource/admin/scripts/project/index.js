@@ -2,25 +2,25 @@ var app = angular.module('indexApp', []);
 app.controller('indexCtrl', function($scope) {
 	var _this = $scope;
 	_this.data = {
-		user: {
-			id: '',
-			username: '',
-    			password: ''
-		},
-		errMsg: ''
+		newTaskUrl: '/website/addTask.do',
+		taskListUrl: '/website/taskList.do',
+		newRuleUrl: '/rule/addRule.do',
+		ruleListUrl: '/rule/ruleList.do'
 	}
 	var data = _this.data;
 	
-	/**
-	 * 初始化
-	 */
-	_this.init = function(){
-		console.log('init');
-		$('.hide').removeClass('hide');
+	_this.redirect = function(action){
+		var url = '';
+		switch(action){
+		case 'newTask':
+			url = data.newTaskUrl;break;
+		case 'taskList':
+			url = data.taskListUrl;break;
+		case 'newRule':
+			url = data.newRuleUrl;break;
+		case 'ruleList':
+			url = data.ruleListUrl;break;
+		}
+		window.location.href = core.baseUrl + url;
 	}
-
-	
-	
-    
-	_this.init();
 });

@@ -5,9 +5,10 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="targetUrl" jdbcType="VARCHAR" property="targeturl" />
     <result column="helpUrl" jdbcType="VARCHAR" property="helpurl" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, targetUrl, helpUrl
+    id, targetUrl, helpUrl, userId
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -20,9 +21,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="ssm.com.domain.Website">
-    insert into s_website (id, targetUrl, helpUrl
+    insert into s_website (id, targetUrl, helpUrl, userId
       )
-    values (#{id,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, #{helpurl,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, #{helpurl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="ssm.com.domain.Website">
@@ -37,6 +38,9 @@
       <if test="helpurl != null">
         helpUrl,
       </if>
+      <if test="userId != null">
+        userId,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -47,6 +51,9 @@
       </if>
       <if test="helpurl != null">
         #{helpurl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -59,13 +66,23 @@
       <if test="helpurl != null">
         helpUrl = #{helpurl,jdbcType=VARCHAR},
       </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="ssm.com.domain.Website">
     update s_website
     set targetUrl = #{targeturl,jdbcType=VARCHAR},
-      helpUrl = #{helpurl,jdbcType=VARCHAR}
+      helpUrl = #{helpurl,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByUserid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_website
+    where userId = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

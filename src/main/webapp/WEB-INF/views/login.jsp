@@ -18,13 +18,13 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-block">
-							<input type="text" name="username" ng-model="data.user.username" lay-verify="required" placeholder="请输入您的用户名" autocomplete="off" class="layui-input" maxlength="20">
+							<input type="text" name="username" ng-keyup="customerKeyUp($event)" ng-model="data.user.username" lay-verify="required" placeholder="请输入您的用户名" autocomplete="off" class="layui-input" maxlength="20">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">密码</label>
 						<div class="layui-input-block">
-							<input type="password" name="password" ng-model="data.user.password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input" maxlength="16">
+							<input type="password" name="password" ng-keyup="customerKeyUp($event)" ng-model="data.user.password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input" maxlength="16">
 						</div>
 					</div>
 					<div class="layui-form-item">

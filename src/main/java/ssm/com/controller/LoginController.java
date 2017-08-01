@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import ssm.com.domain.CommonContext;
 import ssm.com.domain.UserCrawler;
 import ssm.com.service.UserCrawlerService;
 import ssm.com.utils.DataUtils;
@@ -53,16 +54,15 @@ public class LoginController {
     public @ResponseBody Map<String,Object> login(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			HttpSession session = request.getSession(true);
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			
 			UserCrawler uc = service.selectByUsername(username);
 			if(uc != null) {
 				boolean isLogin = EncoderUtils.checkPassword(password, uc.getPassword());
 				if(isLogin) {
-					session.setAttribute("username", username);
-					session.setAttribute("userId", uc.getId());
+					HttpSession session = request.getSession(true);
+					session.setAttribute(CommonContext.SESSION_USER, uc);
+					session.setAttribute(CommonContext.SESSION_USER_ID, uc.getId());
 					map = DataUtils.successData(uc);
 				}else {
 					map = DataUtils.errorData("用户名或密码错误");

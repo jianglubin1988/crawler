@@ -6,6 +6,8 @@ public class Website {
     private String targeturl;
 
     private String helpurl;
+    
+    private Integer userId;
 
     public Integer getId() {
         return id;
@@ -30,4 +32,12 @@ public class Website {
     public void setHelpurl(String helpurl) {
         this.helpurl = helpurl == null ? null : helpurl.trim();
     }
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 }

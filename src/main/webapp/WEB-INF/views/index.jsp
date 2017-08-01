@@ -10,19 +10,19 @@
 		<p class="sub-title">靠谱采集，需要哪里采哪里，so easy!</p>
 	</div>
 	<div class="content">
-		<div class="block bg-olive">
+		<div class="block bg-olive" ng-click="redirect('newTask')">
 			新增任务
 		</div>
 		
-		<div class="block bg-yellow">
+		<div class="block bg-yellow" ng-click="redirect('taskList')">
 			任务列表
 		</div>
 		
-		<div class="block bg-blue">
+		<div class="block bg-blue" ng-click="redirect('newRule')">
 			配置规则
 		</div>
 		
-		<div class="block bg-green">
+		<div class="block bg-green" ng-click="redirect('ruleList')">
 			规则列表
 		</div>
 	</div>
