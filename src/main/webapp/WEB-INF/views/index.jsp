@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resource/admin/styles/project/index.css"></link>
 
 <body ng-app="indexApp" ng-controller="indexCtrl">
+<%@include file="head.jsp"%>
 <div class="container">
 	<div class="title">
 		<p class="main-title">靠谱贷后数据采集系统</p>

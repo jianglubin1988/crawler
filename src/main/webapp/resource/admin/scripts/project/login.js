@@ -45,11 +45,11 @@ app.controller('loginCtrl', function($scope) {
     _this.formSubmit = function(){
 		console.log('======login');
 		console.log(data.user);
-		var url = core.baseUrl + '/login/signIn.do';
+		var url = '/login/signIn.do';
 		core.post(url, data.user, {
 			showLoading: false,
 			onSuccess: function(result){
-				window.location.href = core.baseUrl + '/login/redirect.do';
+				core.redirect('/index.do');
 			},
 			onError: function(result){
 				_this.showTips(result.data);
@@ -63,12 +63,12 @@ app.controller('loginCtrl', function($scope) {
     _this.formRegister = function(){
 		console.log('======register');
 		console.log(data.user);
-		var url = core.baseUrl + '/register/signUp.do';
+		var url = '/register/signUp.do';
 		core.post(url, data.user, {
 			onSuccess: function(result){
 				data.user = {};
 				core.success(result.data, function(){
-					window.location.href = core.baseUrl + '/login/index.do';
+					core.redirect('/login/index.do');
 				})
 			},
 			onError: function(result){
@@ -83,12 +83,12 @@ app.controller('loginCtrl', function($scope) {
     _this.formPassword = function(){
 		console.log('======password');
 		console.log(data.user);
-		var url = core.baseUrl + '/register/resetPassword.do';
+		var url = '/register/resetPassword.do';
 		core.post(url, data.user, {
 			onSuccess: function(result){
 				data.user = {};
 				core.success(result.data, function(){
-					window.location.href = core.baseUrl + '/login/index.do';
+					core.redirect('/login/index.do');
 				})
 			},
 			onError: function(result){
@@ -103,7 +103,7 @@ app.controller('loginCtrl', function($scope) {
     _this.sendMsg = function(){
 		console.log('======msg');
 		console.log(data.user);
-		var url = core.baseUrl + '/register/sendMsg.do';
+		var url = '/register/sendMsg.do';
 		core.post(url, data.user, {
 			onSuccess: function(result){
 				core.success(result.data);

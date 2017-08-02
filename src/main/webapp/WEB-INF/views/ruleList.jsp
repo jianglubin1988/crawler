@@ -6,13 +6,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resource/admin/styles/project/ruleList.css"></link>
 
 <body ng-app="ruleListApp" ng-controller="ruleListCtrl">
+<%@include file="head.jsp"%>
 <div class="container">
 	规则列表
-	<%
-		UserCrawler uc = (UserCrawler) session.getAttribute(CommonContext.SESSION_USER);
-	%>
-	
-	<%=uc.getUsername() %>
 	
 	{ruleList}
 </div>

@@ -6,9 +6,10 @@
     <result column="targetUrl" jdbcType="VARCHAR" property="targeturl" />
     <result column="helpUrl" jdbcType="VARCHAR" property="helpurl" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="ruleId" jdbcType="INTEGER" property="ruleId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, targetUrl, helpUrl, userId
+    id, targetUrl, helpUrl, userId, ruleId
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -21,9 +22,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="ssm.com.domain.Website">
-    insert into s_website (id, targetUrl, helpUrl, userId
+    insert into s_website (id, targetUrl, helpUrl, userId, ruleId
       )
-    values (#{id,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, #{helpurl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, #{helpurl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{ruleId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="ssm.com.domain.Website">
@@ -41,6 +42,9 @@
       <if test="userId != null">
         userId,
       </if>
+      <if test="ruleId != null">
+        ruleId,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -54,6 +58,9 @@
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="userId != null">
         userId = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="ruleId != null">
+        ruleId = #{ruleId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -76,7 +86,8 @@
     update s_website
     set targetUrl = #{targeturl,jdbcType=VARCHAR},
       helpUrl = #{helpurl,jdbcType=VARCHAR},
-      userId = #{userId,jdbcType=INTEGER}
+      userId = #{userId,jdbcType=INTEGER},
+      ruleId = #{ruleId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByUserid" parameterType="java.lang.Integer" resultMap="BaseResultMap">

@@ -8,6 +8,8 @@ public class Website {
     private String helpurl;
     
     private Integer userId;
+    
+    private Integer ruleId;
 
     public Integer getId() {
         return id;
@@ -39,5 +41,13 @@ public class Website {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public Integer getRuleId() {
+		return ruleId;
+	}
+
+	public void setRuleId(Integer ruleId) {
+		this.ruleId = ruleId;
 	}
 }

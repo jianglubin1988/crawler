@@ -78,16 +78,4 @@ public class LoginController {
         return map;  
     }
 	
-	@RequestMapping("/redirect")
-	public ModelAndView redirect(HttpServletRequest req, Model model){
-		ModelAndView mv = new ModelAndView();
-		try {
-			mv.setViewName("/index");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.error(e.getMessage());
-		}
-		return mv;
-	}
-	
 }

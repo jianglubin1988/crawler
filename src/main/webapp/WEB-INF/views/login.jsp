@@ -8,13 +8,16 @@
 
 	<div class="block">
 		<div class="tabs">
-			<p class="layui-this" ng-click="tab(1)"><i ng-show="data.tabIndex == 1" class="layui-icon">&#xe602;</i>用户登录</p>
-			<p ng-click="tab(2)"><i ng-show="data.tabIndex == 2" class="layui-icon hide">&#xe602;</i>快速注册</p>
-			<p ng-click="tab(3)"><i ng-show="data.tabIndex == 3" class="layui-icon hide">&#xe602;</i>忘记密码</p>
+			<p class="layui-this" ng-click="tab(1)">
+				<i ng-show="data.tabIndex == 1" class="glyphicon glyphicon-chevron-right"></i>
+				用户登录
+			</p>
+			<p ng-click="tab(2)"><i ng-show="data.tabIndex == 2" class="glyphicon glyphicon-chevron-right hide"></i>快速注册</p>
+			<p ng-click="tab(3)"><i ng-show="data.tabIndex == 3" class="lglyphicon glyphicon-chevron-right hide"></i>忘记密码</p>
 		</div>
 		<div class="forms">
 			<div class="login-form" ng-show="data.tabIndex == 1">
-				<form class="layui-form form-content" action="${pageContext.request.contextPath }/login/signIn.do" method="post">
+				<%-- <form class="layui-form form-content" action="${pageContext.request.contextPath }/login/signIn.do" method="post">
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-block">
@@ -33,6 +36,18 @@
 							<button class="layui-btn form-submit" type="button" ng-click="formSubmit()">立即提交</button>
 						</div>
 					</div>
+				</form> --%>
+				
+				<form action="${pageContext.request.contextPath }/login/signIn.do" method="post">
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Email address</label>
+				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label>
+				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				  </div>
+				  <button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				
 			</div>

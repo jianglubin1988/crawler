@@ -22,6 +22,17 @@
         <filter-name>encodingFilter</filter-name>  
         <url-pattern>/*</url-pattern>  
     </filter-mapping>  
+    
+    <!-- 公共过滤器 -->  
+    <filter>  
+        <filter-name>commonFilter</filter-name>  
+        <filter-class>ssm.com.filter.CommonFilter</filter-class>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>commonFilter</filter-name>  
+        <url-pattern>*.do</url-pattern>  
+    </filter-mapping>  
+    
     <!-- Spring监听器 -->  
     <listener>  
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
@@ -51,6 +62,10 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/resource/admin/*</url-pattern>
     </servlet-mapping>
+    <session-config>
+    		<!-- 设置session 30分钟超时 -->
+        <session-timeout>30</session-timeout>
+    </session-config>
     <welcome-file-list>  
         <welcome-file>/index.jsp</welcome-file>  
     </welcome-file-list>  

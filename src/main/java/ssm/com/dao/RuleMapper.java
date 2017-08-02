@@ -1,9 +1,11 @@
 package ssm.com.dao;
 
+import java.util.List;
+
 import ssm.com.domain.Rule;
 
 public interface RuleMapper extends CommonMapper<Rule>{
 	
-	public Rule selectByWebsiteKey(Integer webId);
+	public List<Rule> selectAll();
 
 }

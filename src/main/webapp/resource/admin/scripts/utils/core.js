@@ -267,7 +267,7 @@ var core = {
 		// 	msg : 'msg',		//返回消息字段名称
 		// 	successVal : 0	//定义当code等于什么时是成功状态
 		// };
-
+		url = core.baseUrl + url;
 		var opt = $.extend(true, {
 			onSuccess : function(result){},
 			onError : function(result){},
@@ -377,6 +377,10 @@ var core = {
 	 */
 	url : function(url){
 		return this.baseUrl + url;
+	},
+	
+	redirect: function(url){
+		window.location.href = core.baseUrl + url;
 	},
 	
 	jDialog: function(target, options, callback){

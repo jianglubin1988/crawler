@@ -6,13 +6,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resource/admin/styles/project/taskList.css"></link>
 
 <body ng-app="taskListApp" ng-controller="taskListCtrl">
+<%@include file="head.jsp"%>
 <div class="container">
 	任务列表
-	<%
-		UserCrawler uc = (UserCrawler) session.getAttribute(CommonContext.SESSION_USER);
-	%>
-	
-	<%=uc.getUsername() %>
 	
 	{taskList}
 </div>
