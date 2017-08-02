@@ -37,9 +37,16 @@ app.controller('addTaskCtrl', ['$scope', '$http', function($scope, $http) {
 	_this.init();
 }]);
 
-//layui.use(['form','layer'], function(){
-//  var form = layui.form();
-//  var layer = layui.layer;
-//  
-//  //各种基于事件的操作，下面会有进一步介绍
-//});
+layui.use(['form','layer'], function(){
+  var form = layui.form();
+  var layer = layui.layer;
+  
+  //外部调用angular js 内容
+  var appElement = document.querySelector('[ng-controller="addTaskCtrl"]');
+  var scope = angular.element(appElement).scope();
+  
+  form.on('select(rule)', function(data){
+	  scope.data.webBean.ruleId = data.value;
+	  console.log(scope.data.webBean);
+  });
+});

@@ -17,7 +17,7 @@
 		</div>
 		<div class="forms">
 			<div class="login-form" ng-show="data.tabIndex == 1">
-				<%-- <form class="layui-form form-content" action="${pageContext.request.contextPath }/login/signIn.do" method="post">
+				<form class="layui-form form-content" action="${pageContext.request.contextPath }/login/signIn.do" method="post">
 					<div class="layui-form-item">
 						<label class="layui-form-label">用户名</label>
 						<div class="layui-input-block">
@@ -36,20 +36,7 @@
 							<button class="layui-btn form-submit" type="button" ng-click="formSubmit()">立即提交</button>
 						</div>
 					</div>
-				</form> --%>
-				
-				<form action="${pageContext.request.contextPath }/login/signIn.do" method="post">
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-				  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
 				</form>
-				
 			</div>
 
 			<div class="register-form hide"  ng-show="data.tabIndex == 2">
