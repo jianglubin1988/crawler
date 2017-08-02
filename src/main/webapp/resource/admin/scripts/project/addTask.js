@@ -10,10 +10,24 @@ app.controller('addTaskCtrl', ['$scope', '$http', function($scope, $http) {
 		}
 	}
 	var data = _this.data;
+	$http.get(core.baseUrl + '/rule/selectAll.do').success(function (result) {
+        data.ruleList = result.data;
+    });
 	
 	_this.formSubmit = function(){
 		console.log(data.webBean);
-		
+		core.post('/website/save.do', data.webBean, {
+			onSuccess: function(result){
+				console.log('success');
+				core.success(result.msg, function(){
+					window.location.reload();
+				});
+				
+			},
+			onError: function(result){
+				console.log(result);
+			}
+		})
 		return false;
 	}
 	
@@ -23,15 +37,8 @@ app.controller('addTaskCtrl', ['$scope', '$http', function($scope, $http) {
 		console.log(data.webBean);
 	}
 	
-	_this.getAllRules = function(){
-		$http.get('/crawler/rule/selectAll.do').success(function (result) {
-	         data.ruleList = result.data;
-	    });
-	}
-	
 	_this.init = function(){
 		console.log('load add task jsp');
-		_this.getAllRules();
 	}
 	
 	_this.init();

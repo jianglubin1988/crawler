@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import ssm.com.domain.Website;
 import ssm.com.service.WebsiteService;
+import ssm.com.utils.DataUtils;
 
 @Controller
 @RequestMapping("/website")
@@ -62,11 +64,20 @@ public class WebsiteController extends BaseController{
     public @ResponseBody Map<String,Object> save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			
-			
+			String tu = request.getParameter("targetUrl");
+			String hu = request.getParameter("helpUrl");
+			String rid = request.getParameter("ruleId");
+			Website record = new Website();
+			record.setTargeturl(tu);
+			record.setHelpurl(hu);
+			record.setUserId(super.getCurrentUserId(request));
+			record.setRuleId(Integer.parseInt(rid));
+			service.insertSelective(record);
+			map = DataUtils.successData(record);
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error(e.getMessage());
+			map = DataUtils.errorData("保存失败， 原因：" + e.getMessage());
 		}
         return map;  
     }

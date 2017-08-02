@@ -21,11 +21,11 @@ html,body{
 }
 
 .block{
-	height: 332px;
+	height: 302px;
 	width: 600px;
 	margin: 20% auto;
 	display: inline-block;
-	padding: 0px 10px;
+	padding: 20px 10px;
 	color: #fff;
 }
 
@@ -41,8 +41,8 @@ html,body{
 
 .tabs p{
 	display: block;
-	height: 110px;
-	line-height: 110px;
+	height: 100px;
+	line-height: 100px;
 	text-align: center;
 	border-bottom: 1px solid #fff;
 	cursor: pointer;
@@ -114,7 +114,4 @@ html,body{
     display: block;
     width: 20px;
     cursor: pointer;
-}
-.layui-form-label{
-	width: 90px;
 }
