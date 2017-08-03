@@ -1,5 +1,9 @@
 package ssm.com.domain;
 
+import javax.servlet.http.HttpServletRequest;
+
+import ssm.com.utils.StringUtils;
+
 public class Website {
     private Integer id;
 
@@ -10,6 +14,8 @@ public class Website {
     private Integer userId;
     
     private Integer ruleId;
+    
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -50,4 +56,45 @@ public class Website {
 	public void setRuleId(Integer ruleId) {
 		this.ruleId = ruleId;
 	}
+	
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	
+	public Website parseRequest(HttpServletRequest request) {
+		Website web = new Website();
+		try {
+			String id = request.getParameter("id");
+			String targetUrl = request.getParameter("targetUrl");
+			String helpUrl = request.getParameter("helpUrl");
+			String ruleId = request.getParameter("ruleId");
+			String status = request.getParameter("status");
+			
+			if(StringUtils.obj2str(id) != "") {
+				web.setId(Integer.parseInt(id));
+			}
+			if(StringUtils.obj2str(targetUrl) != "") {
+				web.setTargeturl(targetUrl);
+			}
+			if(StringUtils.obj2str(helpUrl) != "") {
+				web.setHelpurl(helpUrl);
+			}
+			if(StringUtils.obj2str(ruleId) != "") {
+				web.setRuleId(Integer.parseInt(ruleId));
+			}
+			if(StringUtils.obj2str(status) != "") {
+				web.setStatus(Integer.parseInt(status));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return web;
+	}
+
+	
 }

@@ -7,9 +7,10 @@
     <result column="helpUrl" jdbcType="VARCHAR" property="helpurl" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="ruleId" jdbcType="INTEGER" property="ruleId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, targetUrl, helpUrl, userId, ruleId
+    id, targetUrl, helpUrl, userId, ruleId, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,9 +23,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="ssm.com.domain.Website">
-    insert into s_website (id, targetUrl, helpUrl, userId, ruleId
-      )
-    values (#{id,jdbcType=INTEGER}, #{targeturl,jdbcType=VARCHAR}, #{helpurl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{ruleId,jdbcType=INTEGER}
+    insert into s_website (id, targetUrl, helpUrl, userId, ruleId, status)
+    values (
+    		#{id,jdbcType=INTEGER}, 
+    		#{targeturl,jdbcType=VARCHAR}, 
+    		#{helpurl,jdbcType=VARCHAR}, 
+    		#{userId,jdbcType=INTEGER}, 
+    		#{ruleId,jdbcType=INTEGER},
+    		#{status,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="ssm.com.domain.Website">
@@ -45,6 +51,9 @@
       <if test="ruleId != null">
         ruleId,
       </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -61,6 +70,9 @@
       </if>
       <if test="ruleId != null">
         #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -79,6 +91,9 @@
       <if test="ruleId != null">
         ruleId = #{ruleId,jdbcType=INTEGER},
       </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -87,13 +102,27 @@
     set targetUrl = #{targeturl,jdbcType=VARCHAR},
       helpUrl = #{helpurl,jdbcType=VARCHAR},
       userId = #{userId,jdbcType=INTEGER},
-      ruleId = #{ruleId,jdbcType=INTEGER}
+      ruleId = #{ruleId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByUserid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from s_website
+  <select id="selectByUserid" parameterType="java.lang.Integer" resultType="java.util.Map">
+    SELECT
+		w.id,
+		w.targetUrl,
+		w.helpUrl,
+		w.ruleId,
+		w.status,
+		CASE w.status
+	WHEN 0 THEN
+		'启动'
+	WHEN 1 THEN
+		'停止'
+	END AS statusLabel,
+	 r.name ruleName
+	FROM
+		s_website w
+	LEFT JOIN s_rule r ON w.ruleId = r.id
     where userId = #{userId,jdbcType=INTEGER}
   </select>
 </mapper>

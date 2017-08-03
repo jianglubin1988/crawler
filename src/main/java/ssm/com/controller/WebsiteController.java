@@ -2,6 +2,7 @@ package ssm.com.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -78,6 +79,50 @@ public class WebsiteController extends BaseController{
 			e.printStackTrace();
 			log.error(e.getMessage());
 			map = DataUtils.errorData("保存失败， 原因：" + e.getMessage());
+		}
+        return map;  
+    }
+	
+	/**
+	 * 获取当前登录用户的任务列表
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/selectByUser")  
+    public @ResponseBody Map<String,Object> selectByUser(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			List<Map<String, String>> result = service.selectByUserid(super.getCurrentUserId(request));
+			map = DataUtils.successData(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+			map = DataUtils.errorData("获取任务列表失败， 原因：" + e.getMessage());
+		}
+        return map;  
+    }
+	
+	/**
+	 * 获取当前登录用户的任务列表
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/update")  
+    public @ResponseBody Map<String,Object> update(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			Website record = new Website();
+			record = record.parseRequest(request);
+			service.updateByPrimaryKeySelective(record);
+			map = DataUtils.successData(record);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+			map = DataUtils.errorData("获取任务列表失败， 原因：" + e.getMessage());
 		}
         return map;  
     }

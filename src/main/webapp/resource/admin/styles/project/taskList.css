@@ -1,3 +1,7 @@
 html,body{
 	color: #fff;
 }
+
+.layui-table{
+	color: #333;
+}
