@@ -127,4 +127,27 @@ public class WebsiteController extends BaseController{
         return map;  
     }
 	
+	/**
+	 * 删除任务
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/delete")  
+    public @ResponseBody Map<String,Object> delete(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			Website record = new Website();
+			record = record.parseRequest(request);
+			service.deleteByPrimaryKey(record.getId());
+			map = DataUtils.successData(record);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
+			map = DataUtils.errorData("删除任务失败， 原因：" + e.getMessage());
+		}
+        return map;  
+    }
+	
 }

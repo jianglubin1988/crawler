@@ -116,7 +116,7 @@ app.controller('loginCtrl', function($scope) {
     
     _this.customerKeyUp = function(e){
         var keycode = window.event?e.keyCode:e.which;
-        if(keycode==13){
+        if(keycode==13 && data.user.username && data.user.password){
             _this.formSubmit();
         }
     };

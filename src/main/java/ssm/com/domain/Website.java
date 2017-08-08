@@ -16,6 +16,8 @@ public class Website {
     private Integer ruleId;
     
     private Integer status;
+    
+    private Integer delFlag;
 
     public Integer getId() {
         return id;
@@ -65,6 +67,14 @@ public class Website {
 		this.status = status;
 	}
 	
+	public Integer getDelFlag() {
+		return delFlag;
+	}
+
+	public void setDelFlag(Integer delFlag) {
+		this.delFlag = delFlag;
+	}
+	
 	public Website parseRequest(HttpServletRequest request) {
 		Website web = new Website();
 		try {
@@ -73,6 +83,7 @@ public class Website {
 			String helpUrl = request.getParameter("helpUrl");
 			String ruleId = request.getParameter("ruleId");
 			String status = request.getParameter("status");
+			String delFlag = request.getParameter("delFlag");
 			
 			if(StringUtils.obj2str(id) != "") {
 				web.setId(Integer.parseInt(id));
@@ -89,6 +100,9 @@ public class Website {
 			if(StringUtils.obj2str(status) != "") {
 				web.setStatus(Integer.parseInt(status));
 			}
+			if(StringUtils.obj2str(delFlag) != "") {
+				web.setDelFlag(Integer.parseInt(delFlag));
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,5 +110,4 @@ public class Website {
 		return web;
 	}
 
-	
 }

@@ -40,8 +40,8 @@
 				<input type="checkbox" ng-if="task.status == 0" name="close" data-value={{task.status}} data-id="{{task.id}}" lay-skin="switch" lay-filter="switchStatus" lay-text="停止|启动">
 			</td>
 	    		<td>
-	    			<button class="layui-btn layui-btn-small"><i class="layui-icon"></i></button>
-		    		<button class="layui-btn layui-btn-small"><i class="layui-icon"></i></button>
+	    			<button class="layui-btn layui-btn-small editTask" data-id="{{task.id}}"><i class="layui-icon"></i></button>
+		    		<button class="layui-btn layui-btn-small" ng-click="delTask(task.id)"><i class="layui-icon"></i></button>
 	    		</td>
 	    </tr>
 	  </tbody>

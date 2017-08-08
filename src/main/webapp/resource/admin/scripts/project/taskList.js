@@ -14,17 +14,28 @@ app.controller('taskListCtrl', ['$scope', '$http', function($scope, $http)  {
 	}
 	
 	_this.doUpdate = function(rule){
-		console.log('do update');
-		console.log(rule);
 		core.post('/website/update.do', rule, {
+			showLoading: false,
 			onSuccess: function(result){
 				console.log(result);
 			}
 		})
 	}
 	
+	_this.delTask = function(id){
+		core.confirm('确定删除该任务？', function(status){
+			if(status){
+				core.post('/website/delete.do', {id: id}, {
+					showLoading: false,
+					onSuccess: function(result){
+						_this.loadData();
+					}
+				})
+			}
+		})
+	}
+	
 	_this.init = function(){
-		console.log('load task list jsp');
 		setTimeout(_this.loadData(), 500);
 	}
 	
@@ -46,6 +57,34 @@ layui.use(['form','layer'], function(){
 		  status: this.checked ? 1: 0
 	  }
 	  scope.doUpdate(rule);
+  })
+  
+  $('.editTask').on('click', function(){
+	  var id = $(this).data('id');
+	  var that = this; 
+      //多窗口模式，层叠置顶
+      layer.open({
+        type: 1 //此处以iframe举例
+        ,id: 'edit-'+id
+        ,title: '编辑任务'
+        ,area: ['390px', '260px']
+        ,shade: 0
+        ,maxmin: true
+        ,offset: 'auto'
+        ,content: '<div>'+id+'</div>'
+        ,btn: ['提交', '关闭'] //只是为了演示
+        ,yes: function(){
+//          $(that).click(); 
+        }
+        ,btn2: function(){
+          layer.closeAll();
+        }
+        
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
   })
   
 });
