@@ -6,18 +6,18 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import ssm.com.dao.UserCrawlerMapper;
-import ssm.com.domain.UserCrawler;
-import ssm.com.service.UserCrawlerService;
+import ssm.com.dao.UserMapper;
+import ssm.com.domain.User;
+import ssm.com.service.UserService;
 import ssm.com.utils.EncoderUtils;
 
 @Service("UserCrawlerService")
-public class UserCrawlerServiceImpl implements UserCrawlerService {
+public class UserServiceImpl implements UserService {
 	
-	private static Logger log = Logger.getLogger(UserCrawlerServiceImpl.class);
+	private static Logger log = Logger.getLogger(UserServiceImpl.class);
 	
 	@Resource
-	private UserCrawlerMapper mapper;
+	private UserMapper mapper;
 
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
@@ -32,7 +32,7 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public int insert(UserCrawler record) {
+	public int insert(User record) {
 		int result = 0;
 		try {
 			if(!StringUtils.isEmpty(record.getPassword())) {
@@ -47,7 +47,7 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public int insertSelective(UserCrawler record) {
+	public int insertSelective(User record) {
 		int result = 0;
 		try {
 			result = mapper.insertSelective(record);
@@ -59,8 +59,8 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public UserCrawler selectByPrimaryKey(Integer id) {
-		UserCrawler result = null;
+	public User selectByPrimaryKey(Integer id) {
+		User result = null;
 		try {
 			result = mapper.selectByPrimaryKey(id);
 		} catch (Exception e) {
@@ -71,7 +71,7 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(UserCrawler record) {
+	public int updateByPrimaryKeySelective(User record) {
 		int result = 0;
 		try {
 			result = mapper.updateByPrimaryKeySelective(record);
@@ -83,7 +83,7 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public int updateByPrimaryKey(UserCrawler record) {
+	public int updateByPrimaryKey(User record) {
 		int result = 0;
 		try {
 			result = mapper.updateByPrimaryKey(record);
@@ -95,8 +95,8 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public UserCrawler selectByUsername(String username) {
-		UserCrawler result = null;
+	public User selectByUsername(String username) {
+		User result = null;
 		try {
 			result = mapper.selectByUsername(username);
 		} catch (Exception e) {
@@ -107,8 +107,8 @@ public class UserCrawlerServiceImpl implements UserCrawlerService {
 	}
 
 	@Override
-	public UserCrawler selectByMobile(String mobile) {
-		UserCrawler result = null;
+	public User selectByMobile(String mobile) {
+		User result = null;
 		try {
 			result = mapper.selectByMobile(mobile);
 		} catch (Exception e) {

@@ -17,7 +17,7 @@ var core = {
 		timeout: 2		//请求超时状态
 	},
 
-	baseUrl : "/crawler",
+	baseUrl : "/duck",
 
 	/**
 	 * 加载提示框，支持区域显示
