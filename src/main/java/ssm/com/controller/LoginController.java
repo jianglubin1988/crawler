@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ssm.com.domain.CommonContext;
-import ssm.com.domain.UserCrawler;
-import ssm.com.service.UserCrawlerService;
+import ssm.com.domain.User;
+import ssm.com.service.UserService;
 import ssm.com.utils.DataUtils;
 import ssm.com.utils.EncoderUtils;
 
@@ -29,7 +29,7 @@ public class LoginController {
 	private static Logger log = Logger.getLogger(LoginController.class);
 
 	@Resource
-	private UserCrawlerService service;
+	private UserService service;
 	
 	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest req, Model model){
@@ -56,7 +56,7 @@ public class LoginController {
 		try {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			UserCrawler uc = service.selectByUsername(username);
+			User uc = service.selectByUsername(username);
 			if(uc != null) {
 				boolean isLogin = EncoderUtils.checkPassword(password, uc.getPassword());
 				if(isLogin) {

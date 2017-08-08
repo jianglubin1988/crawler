@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ssm.com.domain.CommonContext;
-import ssm.com.domain.UserCrawler;
+import ssm.com.domain.User;
 
 public class BaseController {
 
@@ -13,8 +13,8 @@ public class BaseController {
 		return session;
 	}
 	
-	public UserCrawler getCurrentUser(HttpServletRequest request) {
-		return (UserCrawler) this.getSession(request).getAttribute(CommonContext.SESSION_USER);
+	public User getCurrentUser(HttpServletRequest request) {
+		return (User) this.getSession(request).getAttribute(CommonContext.SESSION_USER);
 	}
 	
 	public Integer getCurrentUserId(HttpServletRequest request) {
