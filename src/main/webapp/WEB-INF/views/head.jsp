@@ -1,8 +1,8 @@
-<%@page import="ssm.com.domain.User"%>
+<%@page import="ssm.com.domain.UserCrawler"%>
 <%@page import="ssm.com.domain.CommonContext"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	User uc = (User) session.getAttribute(CommonContext.SESSION_USER);
+	UserCrawler uc = (UserCrawler) session.getAttribute(CommonContext.SESSION_USER);
 %>
 
 <div id="header">

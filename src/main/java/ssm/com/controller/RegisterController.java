@@ -14,8 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ssm.com.domain.User;
-import ssm.com.service.UserService;
+import ssm.com.domain.UserCrawler;
+import ssm.com.service.UserCrawlerService;
 import ssm.com.utils.DataUtils;
 import ssm.com.utils.EncoderUtils;
 
@@ -26,7 +26,7 @@ public class RegisterController {
 	private static Logger log = Logger.getLogger(RegisterController.class);
 
 	@Resource
-	private UserService service;
+	private UserCrawlerService service;
 	
 	/**
 	 * 注册
@@ -54,9 +54,9 @@ public class RegisterController {
 			}else if(!password.equals(repassword)){
 				map = DataUtils.errorData("两次密码输入不一致");
 			}else {
-				User uc = service.selectByUsername(username);
+				UserCrawler uc = service.selectByUsername(username);
 				if(uc == null) {
-					uc = new User();
+					uc = new UserCrawler();
 					String enPwd = EncoderUtils.encodeByMd5(password);
 					uc.setUsername(username);
 					uc.setPassword(enPwd);
@@ -101,7 +101,7 @@ public class RegisterController {
 			}else if(!password.equals(repassword)){
 				map = DataUtils.errorData("两次密码输入不一致");
 			}else {
-				User uc = service.selectByMobile(mobile);
+				UserCrawler uc = service.selectByMobile(mobile);
 				if(uc != null) {
 					String enPwd = EncoderUtils.encodeByMd5(password);
 					uc.setPassword(enPwd);
@@ -131,7 +131,7 @@ public class RegisterController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			String mobile = request.getParameter("mobile");
-			User uc = service.selectByMobile(mobile);
+			UserCrawler uc = service.selectByMobile(mobile);
 			if(uc != null) {
 				Double ran = Math.random() * 1000000;
 				map = DataUtils.successData(ran.intValue());

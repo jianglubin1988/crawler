@@ -4,7 +4,7 @@
  */
 var utils = {
 		
-	baseUrl: '/duck',
+	baseUrl: '/crawler',
 
 	/**
 	 * 获取URL参数值

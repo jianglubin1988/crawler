@@ -7,24 +7,24 @@
 <%@include file="head.jsp"%>
 <div class="container">
 	<div class="title">
-		<p class="main-title">爱吃烤鸭管理系统</p>
-		<p class="sub-title">爱吃烤鸭，味道好！</p>
+		<p class="main-title">靠谱贷后数据采集系统</p>
+		<p class="sub-title">靠谱采集，需要哪里采哪里，so easy!</p>
 	</div>
 	<div class="content">
 		<div class="block bg-olive" ng-click="redirect('newTask')">
-			会员管理
+			新增任务
 		</div>
 		
 		<div class="block bg-yellow" ng-click="redirect('taskList')">
-			积分管理
+			任务列表
 		</div>
 		
 		<div class="block bg-blue" ng-click="redirect('newRule')">
-			进货管理
+			配置规则
 		</div>
 		
 		<div class="block bg-green" ng-click="redirect('ruleList')">
-			账单管理
+			规则列表
 		</div>
 	</div>
 </div>

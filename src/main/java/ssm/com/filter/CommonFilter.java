@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import ssm.com.domain.CommonContext;
-import ssm.com.domain.User;
+import ssm.com.domain.UserCrawler;
 
 public class CommonFilter implements Filter {
 
@@ -34,7 +34,7 @@ public class CommonFilter implements Filter {
 		HttpSession session = req.getSession(false);
 		Boolean flag = false;
 		if(session != null) {
-			User uc = (User) session.getAttribute(CommonContext.SESSION_USER);
+			UserCrawler uc = (UserCrawler) session.getAttribute(CommonContext.SESSION_USER);
 			if(uc != null) {
 				chain.doFilter(request, response);
 				return ;
